@@ -7,4 +7,14 @@
   }
 }
 
-// 2A2F32
+#input-area {
+  background: #f0f0f0;
+  font-size: 27px;
+}
+
+#input-area #input {
+  outline: none;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+}
