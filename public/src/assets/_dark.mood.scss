@@ -1,0 +1,49 @@
+#darkApp {
+  #navbar {
+    background-color: #2a2f32;
+    color: #f1f1f2eb;
+    border-bottom: 1px solid #2a2f32;
+  }
+
+  #message-area {
+    #divider {
+      background-color: #1e2a30;
+      color: #f1f1f2eb;
+    }
+  }
+
+  #messages {
+    background-image: url('./dark.jpg');
+  }
+
+  .msg {
+    .bubble {
+      background: #256261;
+      box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
+      .txt {
+        .message {
+          color: #f1f1f2f2;
+        }
+        .timestamp {
+          color: #f1f1f2a1;
+        }
+      }
+      .bubble-arrow {
+        &:after {
+          border-top: 15px solid #256261;
+        }
+      }
+      .bubble-arrow.alt {
+        &:after {
+          border-top: 15px solid #262d31;
+        }
+      }
+    }
+    .bubble.alt {
+      background: #262d31;
+    }
+    .bubble.alt.follow {
+      background: #262d31;
+    }
+  }
+}
