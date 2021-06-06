@@ -1,0 +1,38 @@
+#new-connection {
+  background: #ededed;
+  color: #6c757d;
+  label {
+    font-weight: 600;
+    margin: 0;
+  }
+  i {
+    font-size: 32px;
+    cursor: pointer;
+  }
+  #friend-email {
+    input {
+      border-bottom: 2px solid transparent !important;
+      outline: none;
+      width: 100%;
+      background: inherit;
+    }
+    input:focus {
+      border-bottom-color: hsl(0, 0%, 50%) !important;
+    }
+  }
+  #group {
+    input {
+      border-bottom: 2px solid transparent !important;
+      outline: none;
+      width: 100%;
+      background: inherit;
+    }
+    input:focus {
+      border-bottom-color: hsl(0, 0%, 50%) !important;
+    }
+    .group-menu {
+      overflow-y: auto;
+      max-height: 202px;
+    }
+  }
+}

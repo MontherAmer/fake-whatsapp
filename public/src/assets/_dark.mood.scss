@@ -15,9 +15,9 @@
   }
 
   #navbar {
-    background-color: #2a2f32;
+    background-color: #131c21;
     color: #f1f1f2eb;
-    border-bottom: 1px solid #2a2f32;
+    border-bottom: 1px solid #3d4347;
   }
 
   #message-area {
@@ -135,6 +135,28 @@
     }
     .mode:hover {
       background: #2d3134;
+    }
+  }
+
+  #new-connection {
+    background: #131c21;
+    color: #ffffff;
+    ::placeholder {
+      color: #f1f1f2a1;
+    }
+    #friend-email {
+      color: #ffffff;
+      input {
+        border-bottom-color: #f1f1f2a1 !important;
+        color: #ffffff;
+      }
+    }
+    #group {
+      color: #ffffff;
+      input {
+        border-bottom-color: #f1f1f2a1 !important;
+        color: #ffffff;
+      }
     }
   }
 }
