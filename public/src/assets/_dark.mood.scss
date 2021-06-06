@@ -118,4 +118,23 @@
   #contact:active {
     background: #323739;
   }
+
+  #profile {
+    background: #131c21;
+    .profile-input {
+      color: #f1f1f2eb;
+    }
+    .profile-input:focus {
+      border-bottom-color: #f1f1f2eb !important;
+    }
+    .name:hover {
+      background: #2d3134;
+    }
+    .mode {
+      color: #f1f1f2eb;
+    }
+    .mode:hover {
+      background: #2d3134;
+    }
+  }
 }

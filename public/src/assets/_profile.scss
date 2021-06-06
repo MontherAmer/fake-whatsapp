@@ -1,0 +1,41 @@
+#profile {
+  overflow: auto;
+  background: #ededed;
+  .profile-pic {
+    cursor: pointer;
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+  .profile-input {
+    border-bottom: 2px solid transparent !important;
+    outline: none;
+    width: 100%;
+    background: inherit;
+  }
+
+  .profile-input:focus {
+    border-bottom-color: hsl(0, 0%, 50%) !important;
+  }
+  .name {
+    max-height: fit-content;
+  }
+  .name:hover {
+    background: #ffffff;
+  }
+  .mode {
+    color: #6c757d;
+    cursor: pointer;
+    height: 40px;
+  }
+  .mode:hover {
+    background: #ffffff;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
