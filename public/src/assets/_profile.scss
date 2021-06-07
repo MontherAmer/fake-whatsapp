@@ -1,6 +1,7 @@
 #profile {
-  overflow: auto;
+  overflow-y: auto;
   background: #ededed;
+  height: calc(100% - 67px);
   .profile-pic {
     cursor: pointer;
     position: relative;

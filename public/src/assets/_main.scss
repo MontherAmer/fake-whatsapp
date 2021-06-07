@@ -22,13 +22,22 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.3);
 }
+img {
+  cursor: pointer;
+}
 
 #navbar {
   background: #ededed;
   color: #000000;
   border-bottom: 1px solid rgb(216, 214, 214);
+  height: 67px;
   img {
     height: 50px;
+  }
+  i {
+    font-size: 25px;
+    cursor: pointer;
+    color: #919191;
   }
 }
 
