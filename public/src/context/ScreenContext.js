@@ -6,7 +6,14 @@ export const ScreenContext = createContext();
 export default (props) => {
   const width = useWindowSize();
 
-  const [state, setState] = useState({ CHAT_LIST: true, NEW_CONTACT: false, PROFILE: false, MESSAGES: false, smallScreen: false });
+  const [state, setState] = useState({
+    CHAT_LIST: true,
+    NEW_CONTACT: false,
+    PROFILE: false,
+    MESSAGES: false,
+    smallScreen: false,
+    darkMode: false,
+  });
 
   useEffect(() => {
     console.log('EDOT');
@@ -28,14 +35,16 @@ export default (props) => {
         })
       : setState({
           ...state,
-          CHAT_LIST: e === 'CHAT_LIST' ? true : false,
+          CHAT_LIST: e === 'CHAT_LIST' || e === 'MESSAGES' ? true : false,
           NEW_CONTACT: e === 'NEW_CONTACT' ? true : false,
           PROFILE: e === 'PROFILE' ? true : false,
-          MESSAGES: true,
+          MESSAGES: 'MESSAGES' ? true : false,
         });
   };
 
-  // setState({ ...state, messagesArea: false, screen: e });
+  const updateMode = () => setState({ ...state, darkMode: !state.darkMode });
 
-  return <ScreenContext.Provider value={{ ...state, updateScreen: updateScreen }}>{props.children}</ScreenContext.Provider>;
+  return (
+    <ScreenContext.Provider value={{ ...state, updateMode: updateMode, updateScreen: updateScreen }}>{props.children}</ScreenContext.Provider>
+  );
 };

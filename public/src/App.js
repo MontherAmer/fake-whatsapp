@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import routes from './routes';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
+import { ScreenContext } from './context/ScreenContext';
+
 const App = () => {
+  const { darkMode } = useContext(ScreenContext);
   return (
-    <div id="App">
+    <div id={darkMode ? 'darkApp' : 'App'}>
       <Router>
         <Switch>
           {routes.map((route) => (
