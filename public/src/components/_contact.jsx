@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ScreenContext } from '../context/ScreenContext';
 
-const index = ({ unreadMessages, lastMessage }) => {
+const Contact = ({ unreadMessages, lastMessage }) => {
+  const { updateScreen } = useContext(ScreenContext);
+
+  const handleClick = () => updateScreen('MESSAGES');
+
   return (
-    <div className="chat-list-item d-flex flex-row w-100 p-2 border-bottom unread" id="contact">
+    <div className="chat-list-item d-flex flex-row w-100 p-2 border-bottom unread" id="contact" onClick={handleClick}>
       <img src="https://via.placeholder.com/400x400" alt="Profile Photo" className="img-fluid rounded-circle mr-2" />
       <div className="w-50">
         <div className="name">Programmers</div>
@@ -21,4 +26,4 @@ const index = ({ unreadMessages, lastMessage }) => {
   );
 };
 
-export default index;
+export default Contact;

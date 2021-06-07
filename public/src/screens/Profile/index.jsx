@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 
 import Nav from '../../components/_navbar';
 const Profile = () => {
@@ -13,10 +13,10 @@ const Profile = () => {
   const updateName = () => console.log('blur');
 
   return (
-    <div className="col-12 col-sm-5 col-md-4 d-flex flex-column" id="left-area">
+    <div className="overflow-auto" id="left-area">
       <Nav />
 
-      <div className="row h-100 " id="profile">
+      <div className="row" id="profile">
         <input type="file" id="profile-pic-input" className="d-none" onChange={handleImageChange} ref={hiddenFileInput} />
         <img
           alt="Profile Photo"
@@ -46,7 +46,7 @@ const Profile = () => {
           </p>
         </div>
 
-        <div className="px-3 py-2 w-100 d-flex mb-5 mode">
+        <div className="px-3 py-2 w-100 d-flex mode">
           <p>
             <i class="fas fa-sign-out-alt"></i> Sign out
           </p>

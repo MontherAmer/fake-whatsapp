@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import ScreenContext from './context/ScreenContext';
+
 import App from './App';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import './index.scss';
+const render = (Component) => {
+  return ReactDOM.render(
+    <ScreenContext>
+      <Component />
+    </ScreenContext>,
+    document.getElementById('root')
+  );
+};
+
+render(App);

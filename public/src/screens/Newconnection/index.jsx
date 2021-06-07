@@ -24,7 +24,7 @@ const Newconnection = () => {
   };
   console.log(state);
   return (
-    <div className="col-12 col-sm-5 col-md-4 d-flex flex-column" id="left-area">
+    <div id="left-area" className="h-100">
       <Nav />
       <div className="row h-100 d-flex flex-column align-items-start" id="new-connection">
         {/* add one connection */}

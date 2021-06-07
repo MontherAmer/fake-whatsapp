@@ -1,11 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ScreenContext } from '../context/ScreenContext';
 
-const index = ({ left }) => {
+const Nav = () => {
+  const { CHAT_LIST, NEW_CONTACT, PROFILE, MESSAGES, updateScreen } = useContext(ScreenContext);
+
   return (
-    <div className={left ? 'row d-flex flex-row align-items-center p-2 m-0 w-100' : 'row d-flex flex-row align-items-center p-2'} id="navbar">
-      <img src={'https://via.placeholder.com/400x400'} alt="Profile Photo" className="img-fluid rounded-circle mr-2" />
+    <div className="row d-flex flex-row align-items-center justify-content-between p-2 pr-3" id="navbar">
+      {CHAT_LIST ? (
+        <img
+          src={'https://via.placeholder.com/400x400'}
+          onClick={() => updateScreen('PROFILE')}
+          alt="Profile Photo"
+          className="img-fluid rounded-circle mr-2"
+        />
+      ) : null}
+      {!CHAT_LIST ? <i className="fas fa-arrow-left" onClick={() => updateScreen('CHAT_LIST')}></i> : null}
+
+      {!NEW_CONTACT ? <i className="far fa-comments" onClick={() => updateScreen('NEW_CONTACT')}></i> : null}
     </div>
   );
 };
+// PROFILE  ,  NEW_CONNECTION,  CHAT_LIST
+export default Nav;
 
-export default index;
+{
+  /* <i class="far fa-comments"></i> */
+}
+
+{
+  /* <i class="fas fa-comment-dots"></i> */
+}
+{
+  /* <i class="fas fa-arrow-left"></i> */
+}
