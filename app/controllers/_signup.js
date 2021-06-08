@@ -1,7 +1,7 @@
 const { User } = require('../models');
 const { createJWT } = require('../utils');
 
-exports.create = async (req, res) => {
+exports.signup = async (req, res) => {
   try {
     let { name, email, password } = req.body;
     if (!email || !name || !password) return res.send({ success: false, status: 400, message: 'missing fields' });
