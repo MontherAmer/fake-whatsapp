@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const index = () => {
-  return (
-    <div className="d-flex justify-content-center align-items-center h-100" id="auth">
-      <div>
-        sign up
-        <p>lasdkfjl klsadf lasdjfkljsadflksdf </p>
-        <p>lasdkfjl klsadf lasdjfkljsadflksdf </p>
-        <p>lasdkfjl klsadf lasdjfkljsadflksdf </p>
-        <p>lasdkfjl klsadf lasdjfkljsadflksdf </p>
-      </div>
-    </div>
-  );
+import SignUp from './_signup';
+import SignIn from './_signin';
+
+const Auth = () => {
+  const [state, setState] = useState({ page: 'SIGNIN' });
+
+  const changePage = () => setState({ ...state, page: state.page === 'SIGNIN' ? 'SIGNUP' : 'SIGNIN' });
+
+  return state.page === 'SIGNIN' ? <SignIn changePage={changePage} /> : <SignUp changePage={changePage} />;
+
+  // <div className="d-flex justify-content-center align-items-center h-100" id="auth">
+  // </div>
 };
 
-export default index;
+export default Auth;

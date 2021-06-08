@@ -1,4 +1,4 @@
-.App {
+#App {
   width: 100vw;
   height: 100vh;
 }
@@ -53,12 +53,28 @@ img {
   font-weight: 600;
 }
 
-#auth {
-  background: #fbfaf9;
-  > div {
-    padding: 22px 24px 20px;
-    background-color: #ffffff;
-    border-radius: 3px;
-    box-shadow: 0 17px 50px 0 rgba(0, 0, 0, 0.19), 0 12px 15px 0 rgba(0, 0, 0, 0.24);
-  }
-}
+// #auth {
+//   // background: #64ce50aa;
+//   // > div {
+//   //   padding: 22px 24px 20px;
+//   //   background-color: #fbfaf9;
+//   //   // background-color: #ffffff;
+//   //   border-radius: 3px;
+//   //   box-shadow: 0 17px 50px 0 rgba(0, 0, 0, 0.19), 0 12px 15px 0 rgba(0, 0, 0, 0.24);
+//   //   width: 425px;
+//   //   max-width: 90%;
+//   // }
+
+//   // h1 {
+//   //   text-align: center;
+//   // }
+//   // input {
+//   //   outline: none;
+//   //   border-radius: 50px;
+//   //   font-size: 15px;
+//   //   font-weight: 600;
+//   // }
+//   // input:focus {
+//   //   border-bottom-color: hsl(0, 0%, 50%) !important;
+//   // }
+// }
