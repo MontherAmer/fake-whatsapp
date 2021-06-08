@@ -1,15 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+
+import configureStore from './store';
+import { preStartApisFunction } from './store/_apis';
 import ScreenContext from './context/ScreenContext';
 
 import App from './App';
 
 import './index.scss';
+
+export const { store, persistor } = configureStore();
+
+preStartApisFunction();
+
 const render = (Component) => {
   return ReactDOM.render(
-    <ScreenContext>
-      <Component />
-    </ScreenContext>,
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <ScreenContext>
+          <Component />
+        </ScreenContext>
+      </PersistGate>
+    </Provider>,
     document.getElementById('root')
   );
 };
