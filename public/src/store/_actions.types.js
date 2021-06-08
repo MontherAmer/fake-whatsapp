@@ -1,4 +1,6 @@
 export const actionTypes = {
+  SHOW_ALERT: 'SHOW_ALERT',
+  HIDE_ALERT: 'HIDE_ALERT',
   USER_LOGED_IN: 'USER_LOGED_IN',
   USER_LOGED_OUT: 'USER_LOGED_OUT',
 };

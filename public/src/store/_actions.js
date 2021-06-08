@@ -1,5 +1,12 @@
 import { actionTypes } from './_actions.types';
 import { apis } from './_apis';
+import store from './index';
+
+const dispatchEvent = (e) => store().store.dispatch(e);
+
+export const showAlert = (data) => (dispatch) => dispatch({ type: actionTypes.SHOW_ALERT, payload: data });
+
+export const hideAlert = () => (dispatch) => dispatch({ type: actionTypes.HIDE_ALERT });
 
 export const signUp = (data) => (dispatch) => {
   return apis.signup(data).then((res) => {
@@ -8,7 +15,7 @@ export const signUp = (data) => (dispatch) => {
           type: actionTypes.USER_LOGED_IN,
           payload: res.data,
         })
-      : console.log('ERROR', err);
+      : dispatchEvent({ type: actionTypes.SHOW_ALERT, payload: 'Email is allready used' });
   });
 };
 
@@ -19,6 +26,6 @@ export const login = (data) => (dispatch) => {
           type: actionTypes.USER_LOGED_IN,
           payload: res.data,
         })
-      : console.log('ERROR', err);
+      : dispatchEvent({ type: actionTypes.SHOW_ALERT, payload: 'Email or password is wrong' });
   });
 };

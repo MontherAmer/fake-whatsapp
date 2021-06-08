@@ -3,7 +3,7 @@ import routes from './routes';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { ScreenContext } from './context/ScreenContext';
-
+import Alert from './components/_alert';
 const App = () => {
   const { darkMode } = useContext(ScreenContext);
   return (
@@ -15,6 +15,7 @@ const App = () => {
           ))}
         </Switch>
       </Router>
+      <Alert />
     </div>
   );
 };
