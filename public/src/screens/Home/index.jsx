@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import { ScreenContext } from '../../context/ScreenContext';
 
@@ -8,7 +10,15 @@ import Profile from './components/Profile';
 import Newconnection from './components/NewConnection';
 
 const Home = () => {
+  const history = useHistory();
+
+  const dispatch = useDispatch();
+
+  const { _id } = useSelector((state) => state.userState);
+
   const { CHAT_LIST, NEW_CONTACT, PROFILE, MESSAGES, smallScreen } = useContext(ScreenContext);
+
+  if (!_id) history.push('/auth');
 
   return (
     <div className="container-fluid" id="main-container">
