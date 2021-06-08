@@ -2,17 +2,14 @@ import React, { useContext } from 'react';
 
 import { ScreenContext } from '../../context/ScreenContext';
 
-import MessageArea from '../MessageArea';
-import ChatList from '../ChatList';
-import Profile from '../Profile';
-import Newconnection from '../Newconnection';
+import MessageArea from './components/Messagearea';
+import ChatList from './components/Chatlist';
+import Profile from './components/Profile';
+import Newconnection from './components/NewConnection';
 
 const Home = () => {
   const { CHAT_LIST, NEW_CONTACT, PROFILE, MESSAGES, smallScreen } = useContext(ScreenContext);
 
-  console.log('MESSAGESMESSAGES ', MESSAGES);
-  console.log('CHAT_LISTCHAT_LIST ', CHAT_LIST);
-  console.log('smallScreensmallScreen ', smallScreen);
   return (
     <div className="container-fluid" id="main-container">
       <div className="row h-100" style={{ overflow: 'hidden' }}>

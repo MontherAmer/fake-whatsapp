@@ -1,6 +1,6 @@
 import React from 'react';
-import Nav from '../../components/_navbar';
-import Contact from '../../components/_contact';
+import Nav from '../../../components/_navbar';
+import Contact from '../../../components/_contact';
 
 const arr = [1, 2, 3, 4, 2, 3, 4, 2, 3, 4];
 const index = () => {

@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from 'react';
-import { ScreenContext } from '../../context/ScreenContext';
+import { ScreenContext } from '../../../context/ScreenContext';
 
-import Nav from '../../components/_navbar';
+import Nav from '../../../components/_navbar';
 const Profile = () => {
   const { updateMode } = useContext(ScreenContext);
 

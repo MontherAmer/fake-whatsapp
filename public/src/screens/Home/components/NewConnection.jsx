@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Nav from '../../components/_navbar';
+import Nav from '../../../components/_navbar';
 
 let data = [
   { name: 'aaa', email: 'aaa@test.com', image: 'https://via.placeholder.com/400x400' },

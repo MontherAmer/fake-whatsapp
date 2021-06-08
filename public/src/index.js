@@ -9,7 +9,7 @@ import ScreenContext from './context/ScreenContext';
 
 import App from './App';
 
-import './index.scss';
+import './assets/styles/index.scss';
 
 export const { store, persistor } = configureStore();
 

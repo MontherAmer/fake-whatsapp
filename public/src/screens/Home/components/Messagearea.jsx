@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { ScreenContext } from '../../context/ScreenContext';
+import { ScreenContext } from '../../../context/ScreenContext';
 
-import Nav from '../../components/_navbar';
-import Divider from '../../components/_divider';
-import Input from '../../components/_input';
-import Message from '../../components/_message';
+import Nav from '../../../components/_navbar';
+import Divider from '../../../components/_divider';
+import Input from '../../../components/_input';
+import Message from '../../../components/_message';
 
 const arr = [
   { _id: 1 },

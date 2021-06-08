@@ -16,16 +16,12 @@ export default (props) => {
   });
 
   useEffect(() => {
-    console.log('EDOT');
     let smallScreen = width <= 425 ? true : false;
     setState({ ...state, smallScreen, MESSAGES: !smallScreen, CHAT_LIST: true });
   }, [width]);
 
   const updateScreen = (e) => {
-    let smallScreen = width <= 425 ? true : false;
-    console.log('state.smallScreen ', state.smallScreen);
-    console.log('e ', e);
-    smallScreen
+    width <= 425
       ? setState({
           ...state,
           CHAT_LIST: e === 'CHAT_LIST' ? true : false,
