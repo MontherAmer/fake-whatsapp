@@ -7,6 +7,8 @@ const userState = (state = userInitialState, { type, payload }) => {
   switch (type) {
     case actionTypes.USER_LOGED_IN:
       return { ...state, ...payload };
+    case actionTypes.UPDATE_PROFILE:
+      return { ...state, ...payload };
     case actionTypes.USER_LOGED_OUT:
       return { _id: '', email: '', name: '', token: '' };
     default:

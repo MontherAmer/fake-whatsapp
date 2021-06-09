@@ -51,3 +51,11 @@ export const addFriend = (data) => (dispatch) => {
         dispatch({ type: actionTypes.HIDE_LOADER }));
   });
 };
+
+export const updateProfile = (data) => (dispatch) => {
+  console.log(data);
+  const formData = new FormData();
+  if (data.image) formData.append('image', data.image);
+  if (data.name) formData.append('name', data.name);
+  return apis.update(formData).then((res) => (res.success ? dispatch({ type: actionTypes.UPDATE_PROFILE, payload: res.data }) : null));
+};
