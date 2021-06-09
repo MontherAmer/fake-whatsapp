@@ -12,6 +12,8 @@ export const showLoader = () => (dispatch) => dispatch({ type: actionTypes.SHOW_
 
 export const hideLoader = () => (dispatch) => dispatch({ type: actionTypes.HIDE_LOADER });
 
+export const logOut = () => (dispatch) => dispatch({ type: actionTypes.USER_LOGED_OUT });
+
 export const signUp = (data) => (dispatch) => {
   dispatch({ type: actionTypes.SHOW_LOADER });
   return apis.signup(data).then((res) => {

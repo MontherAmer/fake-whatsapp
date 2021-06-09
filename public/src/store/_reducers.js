@@ -10,7 +10,7 @@ const userState = (state = userInitialState, { type, payload }) => {
     case actionTypes.UPDATE_PROFILE:
       return { ...state, ...payload };
     case actionTypes.USER_LOGED_OUT:
-      return { _id: '', email: '', name: '', token: '' };
+      return {};
     default:
       return state;
   }
