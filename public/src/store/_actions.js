@@ -9,23 +9,26 @@ export const showAlert = (data) => (dispatch) => dispatch({ type: actionTypes.SH
 export const hideAlert = () => (dispatch) => dispatch({ type: actionTypes.HIDE_ALERT });
 
 export const signUp = (data) => (dispatch) => {
+  dispatch({ type: actionTypes.SHOW_LOADER });
   return apis.signup(data).then((res) => {
     return res.success
-      ? dispatch({
+      ? (dispatch({
           type: actionTypes.USER_LOGED_IN,
           payload: res.data,
-        })
-      : dispatchEvent({ type: actionTypes.SHOW_ALERT, payload: 'Email is allready used' });
+        }),
+        dispatch({ type: actionTypes.HIDE_LOADER }))
+      : (dispatchEvent({ type: actionTypes.SHOW_ALERT, payload: 'Email is allready used' }), dispatch({ type: actionTypes.HIDE_LOADER }));
   });
 };
 
 export const login = (data) => (dispatch) => {
   return apis.login(data).then((res) => {
     return res.success
-      ? dispatch({
+      ? (dispatch({
           type: actionTypes.USER_LOGED_IN,
           payload: res.data,
-        })
-      : dispatchEvent({ type: actionTypes.SHOW_ALERT, payload: 'Email or password is wrong' });
+        }),
+        dispatch({ type: actionTypes.HIDE_LOADER }))
+      : (dispatchEvent({ type: actionTypes.SHOW_ALERT, payload: 'Email or password is wrong' }), dispatch({ type: actionTypes.HIDE_LOADER }));
   });
 };

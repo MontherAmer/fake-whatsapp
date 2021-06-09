@@ -6,7 +6,7 @@ import { actionTypes } from '../store/_actions.types';
 const Alert = () => {
   const dispatch = useDispatch();
 
-  const { show, text } = useSelector((state) => state.alertState);
+  const { show, text } = useSelector((state) => state.utilsState);
 
   useEffect(() => {
     setTimeout(() => dispatch({ type: actionTypes.HIDE_ALERT }), 3000);
