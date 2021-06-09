@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import { ScreenContext } from '../../context/ScreenContext';
@@ -11,8 +11,6 @@ import Newconnection from './components/NewConnection';
 
 const Home = () => {
   const history = useHistory();
-
-  const dispatch = useDispatch();
 
   const { _id } = useSelector((state) => state.userState);
 

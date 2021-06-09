@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { isEmail } from '../../../utils/is.email';
+import { addFriend, showAlert, showLoader, hideLoader } from '../../../store/_actions';
+
 import Nav from '../../../components/_navbar';
 
 let data = [
-  { name: 'aaa', email: 'aaa@test.com', image: 'https://via.placeholder.com/400x400' },
-  { name: 'aaa', email: 'aaa@test.com', image: 'https://via.placeholder.com/400x400' },
-  { name: 'abb', email: 'abb@test.com', image: 'https://via.placeholder.com/400x400' },
+  { name: 'user1', email: 'user1@test.com', image: 'https://via.placeholder.com/400x400' },
+  { name: 'user2', email: 'user3@test.com', image: 'https://via.placeholder.com/400x400' },
+  { name: 'user3', email: 'user4@test.com', image: 'https://via.placeholder.com/400x400' },
   { name: 'bbb', email: 'bbb@test.com', image: 'https://via.placeholder.com/400x400' },
   { name: 'bbc', email: 'bbc@test.com', image: 'https://via.placeholder.com/400x400' },
   { name: 'aaa', email: 'aaa@test.com', image: 'https://via.placeholder.com/400x400' },
@@ -13,6 +19,7 @@ let data = [
 ];
 
 const Newconnection = () => {
+  const dispatch = useDispatch();
   const [state, setState] = useState({});
 
   const handleChange = (e) => setState({ ...state, [e.target.name]: e.target.value });
@@ -22,7 +29,18 @@ const Newconnection = () => {
     let show = e.target.value ? true : false;
     setState({ ...state, search: e.target.value, show, result });
   };
-  console.log(state);
+
+  const handleaddFriend = async () => {
+    if (isEmail(state.email)) {
+      dispatch(showLoader());
+      let { success } = await dispatch(addFriend(state));
+      dispatch(hideLoader());
+      console.log('should redirect if success');
+    } else {
+      dispatch(showAlert('Please provide valid email'));
+    }
+  };
+
   return (
     <div id="left-area" className="h-100">
       <Nav />
@@ -33,11 +51,10 @@ const Newconnection = () => {
             <label>New friend:</label>
           </div>
           <div className="d-flex">
-            <input type="email" name="email" placeholder="Email.." autoComplete="off" className="w-100 border-0 py-2" />
-            <i class="far fa-caret-square-right align-self-end ml-2"></i>
+            <input type="email" name="email" placeholder="Email.." value={state.email} onChange={handleChange} className="w-100 border-0 py-2" />
+            <i class="far fa-caret-square-right align-self-end ml-2" onClick={handleaddFriend}></i>
           </div>
         </div>
-        {/* <hr /> */}
         {/* create group */}
         <div className="px-3 py-3 w-100" id="group">
           <div className="mb-1">
@@ -89,6 +106,3 @@ const Newconnection = () => {
 };
 
 export default Newconnection;
-{
-  /* <i class="far fa-caret-square-right"></i> */
-}
