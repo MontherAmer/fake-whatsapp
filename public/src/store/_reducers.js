@@ -31,4 +31,15 @@ const utilsState = (state = utilsInitialState, { type, payload }) => {
   }
 };
 
-export default combineReducers({ userState, utilsState });
+const contactsInitialState = { list: [] };
+
+const contactsState = (state = contactsInitialState, { type, payload }) => {
+  switch (type) {
+    case actionTypes.UPDATE_CONTACT_LIST:
+      return { ...state, list: payload };
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({ userState, utilsState, contactsState });

@@ -8,6 +8,10 @@ export const showAlert = (data) => (dispatch) => dispatch({ type: actionTypes.SH
 
 export const hideAlert = () => (dispatch) => dispatch({ type: actionTypes.HIDE_ALERT });
 
+export const showLoader = () => (dispatch) => dispatch({ type: actionTypes.SHOW_LOADER });
+
+export const hideLoader = () => (dispatch) => dispatch({ type: actionTypes.HIDE_LOADER });
+
 export const signUp = (data) => (dispatch) => {
   dispatch({ type: actionTypes.SHOW_LOADER });
   return apis.signup(data).then((res) => {
@@ -30,5 +34,20 @@ export const login = (data) => (dispatch) => {
         }),
         dispatch({ type: actionTypes.HIDE_LOADER }))
       : (dispatchEvent({ type: actionTypes.SHOW_ALERT, payload: 'Email or password is wrong' }), dispatch({ type: actionTypes.HIDE_LOADER }));
+  });
+};
+
+export const addFriend = (data) => (dispatch) => {
+  dispatch({ type: actionTypes.SHOW_LOADER });
+  return apis.friend(data).then((res) => {
+    console.log('this is my response ', res);
+    return res.success
+      ? (dispatch({
+          type: actionTypes.UPDATE_CONTACT_LIST,
+          payload: res.data,
+        }),
+        dispatch({ type: actionTypes.HIDE_LOADER, success: true }))
+      : (dispatchEvent({ type: actionTypes.SHOW_ALERT, payload: 'This email does not have accound' }),
+        dispatch({ type: actionTypes.HIDE_LOADER }));
   });
 };

@@ -4,6 +4,7 @@ import store from './index';
 export const apis = {
   signup: (data) => Axios.post('/apis/signup', data),
   login: (data) => Axios.post('/apis/login', data),
+  friend: (data) => Axios.post('/apis/friend', data),
 };
 
 const getToken = () => store().store.getState().userState.token;
