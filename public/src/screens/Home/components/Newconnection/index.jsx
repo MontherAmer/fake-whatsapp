@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { isEmail } from '../../../utils/is.email';
-import { addFriend, showAlert, showLoader, hideLoader } from '../../../store/_actions';
+import { isEmail } from '../../../../utils/is.email';
+import { addFriend, showAlert, showLoader, hideLoader } from '../../../../store/_actions';
 
-import Nav from '../../../components/_navbar';
+import Nav from '../../../../components/_navbar';
 
 let data = [
   { name: 'user1', email: 'user1@test.com', image: 'https://via.placeholder.com/400x400' },
@@ -42,11 +42,11 @@ const Newconnection = () => {
   };
 
   return (
-    <div id="left-area" className="h-100">
+    <div className="h-100">
       <Nav />
       <div className="row h-100 d-flex flex-column align-items-start" id="new-connection">
         {/* add one connection */}
-        {/* <div className="px-3 py-3 w-100" id="friend-email">
+        <div className="px-3 py-3 w-100" id="friend-email">
           <div className="mb-1">
             <label>New friend:</label>
           </div>
@@ -54,7 +54,7 @@ const Newconnection = () => {
             <input type="email" name="email" placeholder="Email.." value={state.email} onChange={handleChange} className="w-100 border-0 py-2" />
             <i class="far fa-caret-square-right align-self-end ml-2" onClick={handleaddFriend}></i>
           </div>
-        </div> */}
+        </div>
         {/* create group */}
         <div className="px-3 py-3 w-100" id="group">
           <div className="mb-1">

@@ -1,3 +1,10 @@
+#App {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+// Need Update
 #auth {
   background: #8ac16c;
   .login-page {
@@ -98,11 +105,15 @@
 #left-area {
   position: relative;
   height: 100%;
+  background: #ededed;
 }
 
 #chat-list {
   overflow-y: auto;
   height: calc(100% - 67px);
+  background: #ededed;
+  display: flex;
+  flex-direction: column;
 }
 
 #message-area {
@@ -227,6 +238,7 @@
 #contact {
   background: white;
   cursor: pointer;
+  height: fit-content;
   img {
     height: 50px;
   }
@@ -257,11 +269,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-#App {
-  width: 100vw;
-  height: 100vh;
 }
 
 #main-container {
@@ -433,7 +440,7 @@ img {
   }
 }
 
-#new-connection {
+#group-container {
   background: #ededed;
   color: #6c757d;
   height: calc(100% - 67px);
@@ -444,17 +451,6 @@ img {
   i {
     font-size: 32px;
     cursor: pointer;
-  }
-  #friend-email {
-    input {
-      border-bottom: 2px solid transparent !important;
-      outline: none;
-      width: 100%;
-      background: inherit;
-    }
-    input:focus {
-      border-bottom-color: hsl(0, 0%, 50%) !important;
-    }
   }
   #group {
     input {
@@ -470,6 +466,26 @@ img {
       overflow-y: auto;
       max-height: 202px;
     }
+  }
+}
+
+#friend-email {
+  position: relative;
+  background-color: #ededed;
+  height: fit-content;
+  input {
+    outline: none;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 50px;
+  }
+  i {
+    position: absolute;
+    top: 22px;
+    right: 7px;
+    font-size: 21px;
+    cursor: pointer;
+    color: #ededed;
   }
 }
 
@@ -620,19 +636,5 @@ img {
   100% {
     stroke-dasharray: 90, 150;
     stroke-dashoffset: -124;
-  }
-}
-
-.app-wrapper {
-  width: 100%;
-  height: 100%;
-}
-
-@media screen and (max-width: 600px) {
-  body {
-    overflow-x: auto;
-  }
-  .app-wrapper {
-    width: 600px;
   }
 }
