@@ -5,7 +5,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 import configureStore from './store';
 import { preStartApisFunction } from './store/_apis';
-import ScreenContext from './context/ScreenContext';
+import ThemeContext from './context/ThemeContext';
 
 import App from './App';
 
@@ -19,9 +19,9 @@ const render = (Component) => {
   return ReactDOM.render(
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <ScreenContext>
+        <ThemeContext>
           <Component />
-        </ScreenContext>
+        </ThemeContext>
       </PersistGate>
     </Provider>,
     document.getElementById('root')

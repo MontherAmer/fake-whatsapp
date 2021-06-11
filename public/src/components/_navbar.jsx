@@ -1,35 +1,33 @@
-import React, { useContext } from 'react';
-import { ScreenContext } from '../context/ScreenContext';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { updateScreenView } from '../store/_actions'
 
 const Nav = () => {
-  const { CHAT_LIST, NEW_CONTACT, PROFILE, MESSAGES, updateScreen } = useContext(ScreenContext);
+  const dispatch = useDispatch();
+
+  const { screen } = useSelector(state => state.screenState)
+
+  const redirect = (data) => dispatch(updateScreenView(data))
+
 
   return (
     <div className="row d-flex flex-row align-items-center justify-content-between p-2 pr-3" id="navbar">
-      {CHAT_LIST ? (
+      {screen === 'CHAT_LIST' ? (
         <img
           src={'https://via.placeholder.com/400x400'}
-          onClick={() => updateScreen('PROFILE')}
+          onClick={() => redirect('PROFILE')}
           alt="Profile Photo"
           className="img-fluid rounded-circle mr-2"
         />
       ) : null}
-      {!CHAT_LIST ? <i className="fas fa-arrow-left" onClick={() => updateScreen('CHAT_LIST')}></i> : null}
+      {screen !== 'CHAT_LIST' ? <i className="fas fa-arrow-left" onClick={() => redirect('CHAT_LIST')}></i> : null}
 
-      {!NEW_CONTACT ? <i className="far fa-comments" onClick={() => updateScreen('NEW_CONTACT')}></i> : null}
+      {screen !== 'GROUP' ? <i className="far fa-comments" onClick={() => redirect('GROUP')}></i> : null}
+
+      {screen === 'GROUP' ? <div className="justify-self-start">Create Group</div> : null}
+
+
     </div>
   );
 };
-// PROFILE  ,  NEW_CONNECTION,  CHAT_LIST
 export default Nav;
-
-{
-  /* <i class="far fa-comments"></i> */
-}
-
-{
-  /* <i class="fas fa-comment-dots"></i> */
-}
-{
-  /* <i class="fas fa-arrow-left"></i> */
-}

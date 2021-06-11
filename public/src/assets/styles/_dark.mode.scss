@@ -31,6 +31,10 @@
     background-image: url('../images/dark_backgroun.jpg');
   }
 
+  #left-area {
+    background: #131c21;
+  }
+
   .msg {
     .bubble {
       background: #256261;
@@ -138,6 +142,12 @@
     }
   }
 
+  #friend-email {
+    i {
+      color: #131c21;
+    }
+  }
+
   #new-connection {
     background: #131c21;
     color: #ffffff;
@@ -150,6 +160,9 @@
         border-bottom-color: #f1f1f2a1 !important;
         color: #ffffff;
       }
+      i {
+        color: #131c21;
+      }
     }
     #group {
       color: #ffffff;
@@ -157,6 +170,14 @@
         border-bottom-color: #f1f1f2a1 !important;
         color: #ffffff;
       }
+    }
+  }
+
+  #group-container {
+    background: #131c21;
+    color: #131c21;
+    input {
+      background-color: #ffffff;
     }
   }
 }

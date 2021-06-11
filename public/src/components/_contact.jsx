@@ -1,10 +1,15 @@
 import React, { useContext } from 'react';
-import { ScreenContext } from '../context/ScreenContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateScreenView } from '../store/_actions'
 
 const Contact = ({ unreadMessages, lastMessage }) => {
-  const { updateScreen } = useContext(ScreenContext);
+  const dispatch = useDispatch()
 
-  const handleClick = () => updateScreen('MESSAGES');
+  // const { updateScreen } = useContext(ThemeContext);
+
+  const { sm, screen } = useSelector((state) => state.screenState);
+
+  const handleClick = () => dispatch(updateScreenView('MESSAGES'))
 
   return (
     <div className="chat-list-item d-flex flex-row w-100 p-2 border-bottom unread" id="contact" onClick={handleClick}>

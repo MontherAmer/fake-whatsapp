@@ -2,7 +2,7 @@ import React from 'react';
 
 const New = ({ email, handleChange, handleaddFriend }) => {
   return (
-    <div className=" py-3 w-100" id="friend-email">
+    <div className="w-100 py-3 px-2" id="friend-email">
       <input
         type="email"
         name="email"

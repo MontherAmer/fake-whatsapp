@@ -8,8 +8,8 @@ import New from './_new';
 import Nav from '../../../../components/_navbar';
 import Contact from '../../../../components/_contact';
 
-const arr = [1, 2, 3, 4, 2, 3, 4, 2, 3, 4];
-const ChatList = () => {
+const arr = [1, 2, 3, 1, 1, 2, 3, 1, 1, 2, 3, 1,];
+const ChatList = ({ show }) => {
   const dispatch = useDispatch();
   const [state, setState] = useState({});
 
@@ -28,13 +28,16 @@ const ChatList = () => {
   };
 
   return (
-    <div className="overflow-auto h-100">
+    <div className={show ? "col-12 col-sm-5 col-md-4 d-flex flex-column h-100" : "d-none"}>
       <Nav />
-      <div className="row h-100" id="chat-list">
+      <div className="row h-100" id="left-area">
         <New email={state.email} handleChange={handleChange} handleaddFriend={handleaddFriend} />
-        {arr.map((item) => (
-          <Contact lastMessage unreadMessages />
-        ))}
+        <div className='h-100 w-100 d-flex flex-column justify-content-start flex-nowrap overflow-auto' style={{ overflowY: 'auto' }}>
+          {arr.map((item) => (
+            <Contact lastMessage unreadMessages />
+          ))}
+        </div>
+
       </div>
     </div>
   );

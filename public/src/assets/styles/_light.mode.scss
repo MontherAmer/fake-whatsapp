@@ -104,8 +104,8 @@
 
 #left-area {
   position: relative;
-  height: 100%;
   background: #ededed;
+  height: 100%;
 }
 
 #chat-list {
@@ -274,6 +274,7 @@
 #main-container {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -299,6 +300,7 @@ img {
   color: #000000;
   border-bottom: 1px solid rgb(216, 214, 214);
   height: 67px;
+  min-height: 67px;
   img {
     height: 50px;
   }
@@ -444,6 +446,7 @@ img {
   background: #ededed;
   color: #6c757d;
   height: calc(100% - 67px);
+  overflow-y: auto;
   label {
     font-weight: 600;
     margin: 0;
@@ -452,26 +455,21 @@ img {
     font-size: 32px;
     cursor: pointer;
   }
-  #group {
-    input {
-      border-bottom: 2px solid transparent !important;
-      outline: none;
-      width: 100%;
-      background: inherit;
-    }
-    input:focus {
-      border-bottom-color: hsl(0, 0%, 50%) !important;
-    }
-    .group-menu {
-      overflow-y: auto;
-      max-height: 202px;
-    }
+  input {
+    outline: none;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 50px;
+  }
+
+  .group-menu {
+    overflow-y: auto;
+    max-height: 202px;
   }
 }
 
 #friend-email {
   position: relative;
-  background-color: #ededed;
   height: fit-content;
   input {
     outline: none;
@@ -482,11 +480,18 @@ img {
   i {
     position: absolute;
     top: 22px;
-    right: 7px;
+    right: 12px;
     font-size: 21px;
     cursor: pointer;
     color: #ededed;
   }
+}
+
+.group-pic {
+  cursor: pointer;
+  position: relative;
+  width: 100px;
+  height: 100px;
 }
 
 #profile {
