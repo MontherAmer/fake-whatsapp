@@ -14,6 +14,10 @@ export const hideLoader = () => (dispatch) => dispatch({ type: actionTypes.HIDE_
 
 export const logOut = () => (dispatch) => dispatch({ type: actionTypes.USER_LOGED_OUT });
 
+export const updateScreenWidth = (data) => (dispatch) => dispatch({ type: actionTypes.UPDATE_SCREEN_WIDTH, payload: data });
+
+export const updateScreenView = data=>dispatch=>dispatch({type:actionTypes.UPDATE_SCREEN_VIEW,payload:data})
+
 export const signUp = (data) => (dispatch) => {
   dispatch({ type: actionTypes.SHOW_LOADER });
   return apis.signup(data).then((res) => {

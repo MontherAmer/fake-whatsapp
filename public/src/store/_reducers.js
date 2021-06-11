@@ -44,4 +44,18 @@ const contactsState = (state = contactsInitialState, { type, payload }) => {
   }
 };
 
-export default combineReducers({ userState, utilsState, contactsState });
+const screenInitialState = { screen: 'CHAT_LIST', sm: window.innerWidth <= 425 };
+
+const screenState = (state = screenInitialState, { type, payload }) => {
+  console.log(payload)
+  switch (type) {
+    case actionTypes.UPDATE_SCREEN_VIEW:
+      return { ...state, screen: payload, sm: window.innerWidth <= 425 };
+    case actionTypes.UPDATE_SCREEN_WIDTH:
+      return { ...state, sm: payload <= 425 };
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({ userState, utilsState, contactsState, screenState });
