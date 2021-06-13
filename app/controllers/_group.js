@@ -1,13 +1,17 @@
-const { Connection } = require('../models');
+const { User, Connection } = require('../models');
 const { getUserConnections } = require('../utils');
 
 exports.group = async (req, res) => {
   try {
-    if (req.file) user.image = req.file.location;
+    let users = JSON.parse(req.body.users);
 
-    let connection = new Connection({ ...req.body, image: req.file ? req.file.location : null });
+    users.push(req._id);
 
-    await connection.save();
+    let connection = new Connection({ ...req.body, users, type: 'Group', image: req.file ? req.file.location : null });
+
+    connection = await connection.save();
+
+    await User.updateMany({ _id: connection.users }, { $push: { connections: connection._id } });
 
     let data = await getUserConnections(req._id);
 

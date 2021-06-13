@@ -3,7 +3,6 @@ const { getUserConnections } = require('../utils');
 
 exports.friend = async (req, res) => {
   try {
-    console.log('MMMMM', req.body);
     let friend = await User.findOne({ email: req.body.email });
 
     if (String(friend._id) === String(req._id)) return res.send({ success: false, status: 400, message: `You can't add yourself` });
