@@ -1,5 +1,5 @@
 const { User } = require('../models');
-const { createJWT } = require('../utils');
+const { createJWT, getUserConnections } = require('../utils');
 
 exports.login = async (req, res) => {
   try {
@@ -13,12 +13,17 @@ exports.login = async (req, res) => {
 
     if (!isMatched) return res.send({ success: false, status: 401, message: 'email or password is wrong' });
 
-    ({ _id, email, name } = user);
+    ({ _id, email, name, image } = user);
 
     let token = createJWT({ _id, email });
 
-    return res.send({ success: true, status: 200, data: { _id, email, name, token } });
+    let contacts = await getUserConnections(_id);
+
+    console.log('PPPPPPP ', contacts);
+
+    return res.send({ success: true, status: 200, data: { _id, email, image, name, token, contacts } });
   } catch (err) {
+    console.log(err);
     return res.send({ success: false, status: 500 });
   }
 };

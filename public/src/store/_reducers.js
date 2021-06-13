@@ -6,7 +6,8 @@ const userInitialState = { _id: '', email: '', name: '', token: '' };
 const userState = (state = userInitialState, { type, payload }) => {
   switch (type) {
     case actionTypes.USER_LOGED_IN:
-      return { ...state, ...payload };
+      let { _id, email, name, token } = payload;
+      return { ...state, _id, email, name, token };
     case actionTypes.UPDATE_PROFILE:
       return { ...state, ...payload };
     case actionTypes.USER_LOGED_OUT:
@@ -37,6 +38,8 @@ const contactsInitialState = { list: [] };
 
 const contactsState = (state = contactsInitialState, { type, payload }) => {
   switch (type) {
+    case actionTypes.USER_LOGED_IN:
+      return { ...state, list: payload.contacts };
     case actionTypes.UPDATE_CONTACT_LIST:
       return { ...state, list: payload };
     default:
@@ -47,7 +50,7 @@ const contactsState = (state = contactsInitialState, { type, payload }) => {
 const screenInitialState = { screen: 'CHAT_LIST', sm: window.innerWidth <= 425 };
 
 const screenState = (state = screenInitialState, { type, payload }) => {
-  console.log(payload)
+  console.log(payload);
   switch (type) {
     case actionTypes.UPDATE_SCREEN_VIEW:
       return { ...state, screen: payload, sm: window.innerWidth <= 425 };
