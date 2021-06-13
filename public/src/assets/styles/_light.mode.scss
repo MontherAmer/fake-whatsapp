@@ -459,12 +459,15 @@ img {
     outline: none;
     width: 100%;
     background-color: #ffffff;
-    border-radius: 50px;
+    border-radius: 10px;
   }
 
   .group-menu {
     overflow-y: auto;
     max-height: 202px;
+    position: absolute;
+    top: 35px;
+    width: 100%;
   }
 }
 

@@ -6,6 +6,7 @@ export const apis = {
   login: (data) => Axios.post('/apis/login', data),
   update: (data) => Axios.put('/apis/user', data),
   friend: (data) => Axios.post('/apis/friend', data),
+  group: (data) => Axios.post('/apis/group', data),
 };
 
 const getToken = () => store().store.getState().userState.token;

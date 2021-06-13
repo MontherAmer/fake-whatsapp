@@ -8,7 +8,7 @@ import rootReducer from './_reducers';
 const persistConfig = {
   key: 'root',
   storage: storage,
-  whitelist: ['userState'],
+  whitelist: ['userState', 'contactsState', 'screenState'],
 };
 
 const pReducer = persistReducer(persistConfig, rootReducer);

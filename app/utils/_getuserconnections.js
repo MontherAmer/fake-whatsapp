@@ -3,7 +3,7 @@ const { User, Message } = require('../models');
 const getConnectionImage = (id, users) => {
   let image = null;
   users.map((item) => {
-    if (String(item._id) !== String(id)) image = item._id;
+    if (String(item._id) !== String(id)) image = item.image;
   });
   return image;
 };
@@ -31,14 +31,26 @@ exports.getUserConnections = async (_id) => {
     data = Promise.all(
       data.map(async (contact) => {
         let data = contact.users.filter((user) => String(user._id) !== String(_id))[0];
-        return {
-          _id: contact._id,
-          name: data.name,
-          image: getConnectionImage(_id, contact.users),
-          newmessage: await getLastMessageText(contact._id),
-          date: await getLastMessageDate(contact._id),
-          unread: 1,
-        };
+        return contact.type === 'User'
+          ? {
+              _id: contact._id,
+              name: data.name,
+              email: data.email,
+              type: 'User',
+              image: getConnectionImage(_id, contact.users),
+              newmessage: await getLastMessageText(contact._id),
+              date: await getLastMessageDate(contact._id),
+              unread: 1,
+            }
+          : {
+              _id: contact._id,
+              name: contact.name,
+              type: 'Group',
+              image: contact.image,
+              newmessage: await getLastMessageText(contact._id),
+              date: await getLastMessageDate(contact._id),
+              unread: 1,
+            };
       })
     );
 
