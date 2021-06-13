@@ -12,4 +12,6 @@ router.put('/user', isAuthenticated, upload.single('image'), controllers.update)
 
 router.post('/friend', isAuthenticated, controllers.friend);
 
+router.post('/group', isAuthenticated, controllers.group);
+
 module.exports = router;
