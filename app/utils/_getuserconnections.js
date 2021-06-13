@@ -38,8 +38,8 @@ exports.getUserConnections = async (_id) => {
               email: data.email,
               type: 'User',
               image: getConnectionImage(_id, contact.users),
-              newmessage: await getLastMessageText(contact._id),
-              date: await getLastMessageDate(contact._id),
+              lastMessage: await getLastMessageText(contact._id),
+              lastMessageDate: await getLastMessageDate(contact._id),
               unread: 1,
             }
           : {
@@ -47,8 +47,8 @@ exports.getUserConnections = async (_id) => {
               name: contact.name,
               type: 'Group',
               image: contact.image,
-              newmessage: await getLastMessageText(contact._id),
-              date: await getLastMessageDate(contact._id),
+              lastMessage: await getLastMessageText(contact._id),
+              lastMessageDate: await getLastMessageDate(contact._id),
               unread: 1,
             };
       })

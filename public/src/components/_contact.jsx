@@ -1,29 +1,33 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { updateScreenView } from '../store/_actions'
+import { updateScreenView } from '../store/_actions';
 
-const Contact = ({ unreadMessages, lastMessage }) => {
-  const dispatch = useDispatch()
+const Contact = ({ unreadMessages, lastMessage, item }) => {
+  console.log('item  ', item);
+  const dispatch = useDispatch();
 
-  // const { updateScreen } = useContext(ThemeContext);
+  // const { sm, screen } = useSelector((state) => state.screenState);
 
-  const { sm, screen } = useSelector((state) => state.screenState);
-
-  const handleClick = () => dispatch(updateScreenView('MESSAGES'))
+  const handleClick = () => dispatch(updateScreenView('MESSAGES'));
 
   return (
     <div className="chat-list-item d-flex flex-row w-100 p-2 border-bottom unread" id="contact" onClick={handleClick}>
-      <img src="https://via.placeholder.com/400x400" alt="Profile Photo" className="img-fluid rounded-circle mr-2" />
+      <img
+        src={item.image || 'https://via.placeholder.com/400x400'}
+        alt="Profile Photo"
+        className="img-fluid rounded-circle mr-2"
+        style={{ width: '50px' }}
+      />
       <div className="w-50">
-        <div className="name">Programmers</div>
-        {lastMessage ? <div className="small last-message">+91 98232 37261: yeah, i'm online</div> : null}
+        <div className="name">{item.name}</div>
+        <div className="small last-message">{item.lastMessage || 'Start chating'}</div>
       </div>
       <div className="flex-grow-1 text-right">
-        {lastMessage ? <div className="small time">28/03/2018</div> : null}
+        {lastMessage ? <div className="small time">{item.lastMessageDate}</div> : null}
 
         {unreadMessages ? (
           <div className="badge badge-success badge-pill small" id="unread-count">
-            2
+            {item.unread}
           </div>
         ) : null}
       </div>
