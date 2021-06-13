@@ -1,4 +1,5 @@
 const { User, Connection } = require('../models');
+const { getUserConnections } = require('../utils');
 
 exports.friend = async (req, res) => {
   try {
@@ -19,16 +20,8 @@ exports.friend = async (req, res) => {
 
     await User.updateMany({ _id: [req._id, friend._id] }, { $push: { connections: connection._id } });
 
-    let data = await User.findById(req._id)
-      .select({ connections: 1, _id: 0 })
-      .populate({ path: 'connections', populate: { path: 'users' } });
-    // .then((doc) => {
-    //   let data = data.connections.map(item=>({
+    let data = await getUserConnections(req._id);
 
-    //   }))
-    //   console.log(data);
-    //   return res.send({ success: true, status: 200, data });
-    // });
     return res.send({ success: true, status: 200, data });
   } catch (err) {
     console.log(err);
