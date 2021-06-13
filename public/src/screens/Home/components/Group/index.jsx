@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { createGroup } from '../../../../store/_actions';
+import { createGroup, updateScreenView } from '../../../../store/_actions';
 
 import Search from './_search';
 import Image from './_image';
@@ -32,7 +32,10 @@ const Group = ({ show }) => {
       show: false,
     });
 
-  const submit = () => dispatch(createGroup(state));
+  const submit = async () => {
+    await dispatch(createGroup(state));
+    dispatch(updateScreenView('CHAT_LIST'));
+  };
 
   return (
     <div className={show ? 'col-12 col-sm-5 col-md-4 d-flex flex-column h-100' : 'd-none'}>
