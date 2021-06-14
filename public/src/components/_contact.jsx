@@ -1,12 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { updateScreenView } from '../store/_actions';
+import { updateScreenView, updateCurentContact, getMessages } from '../store/_actions';
 
-const Contact = ({ unreadMessages, lastMessage, item }) => {
+const Contact = ({ item }) => {
   console.log('item  ', item);
   const dispatch = useDispatch();
 
-  const handleClick = () => dispatch(updateScreenView('MESSAGES'));
+  const handleClick = () => (dispatch(getMessages(item._id)), dispatch(updateCurentContact(item)), dispatch(updateScreenView('MESSAGES')));
 
   return (
     <div className="chat-list-item d-flex flex-row w-100 p-2 border-bottom unread" id="contact" onClick={handleClick}>
@@ -21,13 +21,11 @@ const Contact = ({ unreadMessages, lastMessage, item }) => {
         <div className="small last-message">{item.lastMessage || 'Start chating'}</div>
       </div>
       <div className="flex-grow-1 text-right">
-        {lastMessage ? <div className="small time">{item.lastMessageDate}</div> : null}
+        <div className="small time">{item.lastMessageDate || <>&nbsp;</>}</div>
 
-        {unreadMessages ? (
-          <div className="badge badge-success badge-pill small" id="unread-count">
-            {item.unread}
-          </div>
-        ) : null}
+        <div className="badge badge-success badge-pill small" id="unread-count">
+          {item.unread}
+        </div>
       </div>
     </div>
   );
