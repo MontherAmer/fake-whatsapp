@@ -1,12 +1,10 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateScreenView } from '../store/_actions';
 
 const Contact = ({ unreadMessages, lastMessage, item }) => {
   console.log('item  ', item);
   const dispatch = useDispatch();
-
-  // const { sm, screen } = useSelector((state) => state.screenState);
 
   const handleClick = () => dispatch(updateScreenView('MESSAGES'));
 
