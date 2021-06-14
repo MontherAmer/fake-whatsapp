@@ -60,11 +60,10 @@ export const addFriend = (data) => (dispatch) => {
 
 export const createGroup = (data) => (dispatch) => {
   const formData = new FormData();
-  let users = [];
+
   if (data.image) formData.append('image', data.image);
   if (data.name) formData.append('name', data.name);
   formData.append('users', JSON.stringify(data.selectedIds));
-  // data.selectedIds.map((item, i) => formData.append(`${users[i]}`, item.selectedIds[i]));
 
   dispatch({ type: actionTypes.SHOW_LOADER });
   return apis.group(formData).then((res) => {
@@ -87,3 +86,16 @@ export const updateProfile = (data) => (dispatch) => {
   if (data.name) formData.append('name', data.name);
   return apis.update(formData).then((res) => (res.success ? dispatch({ type: actionTypes.UPDATE_PROFILE, payload: res.data }) : null));
 };
+
+export const getMessages = (data) => (dispatch) => {
+  return apis.messages(data).then((res) => {
+    return res.success
+      ? dispatch({
+          type: actionTypes.MESSAGES_LIST,
+          payload: res.data,
+        })
+      : null;
+  });
+};
+
+export const updateCurentContact = (data) => (dispatch) => dispatch({ type: actionTypes.UPDATE_CURRENT_CONTACT, payload: data });

@@ -34,7 +34,7 @@ const utilsState = (state = utilsInitialState, { type, payload }) => {
   }
 };
 
-const contactsInitialState = { list: [] };
+const contactsInitialState = { list: [], current: {}, messages: [] };
 
 const contactsState = (state = contactsInitialState, { type, payload }) => {
   switch (type) {
@@ -42,6 +42,10 @@ const contactsState = (state = contactsInitialState, { type, payload }) => {
       return { ...state, list: payload.contacts };
     case actionTypes.UPDATE_CONTACT_LIST:
       return { ...state, list: payload };
+    case actionTypes.MESSAGES_LIST:
+      return { ...state, messages: payload };
+    case actionTypes.UPDATE_CURRENT_CONTACT:
+      return { ...state, current: payload };
     default:
       return state;
   }
