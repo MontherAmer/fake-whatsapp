@@ -14,4 +14,6 @@ router.post('/friend', isAuthenticated, controllers.friend);
 
 router.post('/group', isAuthenticated, upload.single('image'), controllers.group);
 
+router.get('/messages/:id', isAuthenticated, controllers.messages);
+
 module.exports = router;

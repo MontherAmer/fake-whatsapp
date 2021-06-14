@@ -36,7 +36,7 @@ const ChatList = ({ show }) => {
         <New email={state.email} handleChange={handleChange} handleaddFriend={handleaddFriend} />
         <div className="h-100 w-100 d-flex flex-column justify-content-start flex-nowrap overflow-auto" style={{ overflowY: 'auto' }}>
           {list.map((item) => (
-            <Contact lastMessage unreadMessages item={item} />
+            <Contact item={item} />
           ))}
         </div>
       </div>
