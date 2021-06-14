@@ -7,7 +7,9 @@
 const app = require('../app');
 const debug = require('debug')('whatsapp:server');
 const http = require('http');
+const socketApi = require('../io');
 
+const io = socketApi.io;
 /**
  * Get port from environment and store in Express.
  */
@@ -74,6 +76,7 @@ function onError(error) {
       throw error;
   }
 }
+io.attach(server);
 
 /**
  * Event listener for HTTP server "listening" event.

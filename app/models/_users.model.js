@@ -8,6 +8,7 @@ const UserSchema = new mongoose.Schema(
     password: { type: String },
     image: { type: String },
     connections: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Connection' }],
+    isOnline: { type: Boolean, default: false },
   },
   {
     timestamps: true,
