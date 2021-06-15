@@ -1,4 +1,6 @@
 const { User } = require('../models');
+const { create } = require('./messages');
+
 const onLineUsers = {};
 
 exports.onSocketConnect = async (io, socket) => {
@@ -9,6 +11,8 @@ exports.onSocketConnect = async (io, socket) => {
 
   onLineUsers[socket._id] = socket.id;
   console.log('onLineUsers ', onLineUsers);
+
+  socket.on('SEND_MESSAGE', (data) => create({ data, socket, io, onLineUsers }));
 
   // NOTE handle socket disconnect
   socket.on('disconnect', async () => {
