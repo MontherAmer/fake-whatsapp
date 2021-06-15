@@ -36,8 +36,8 @@ const MessageArea = ({ show }) => {
 
       <div className="d-flex flex-column" id="messages">
         <Divider />
-        {messages?.map((item, i) => (
-          <Message first={true} from={i % 2 === 0} />
+        {messages?.map((item, i, arr) => (
+          <Message first={i === 0 || item.from !== arr[i - 1].from} message={item} />
         ))}
       </div>
       {current._id ? <Input id={current._id} /> : null}
