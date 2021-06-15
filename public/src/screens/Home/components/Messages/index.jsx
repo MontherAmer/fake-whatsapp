@@ -16,12 +16,15 @@ const MessageArea = ({ show }) => {
       <div className="row d-flex flex-row align-items-center justify-content-between p-2 pr-3 m-0 w-100" id="navbar">
         {sm ? <i className="fas fa-arrow-left ml-2" onClick={() => console.log('CHAT_LIST')}></i> : null}
         <div className="d-flex w-100">
-          <img
-            src={current.image || 'https://via.placeholder.com/400x400'}
-            alt="Profile Photo"
-            className="img-fluid rounded-circle mr-2"
-            style={{ width: '50px' }}
-          />
+          {current._id ? (
+            <img
+              src={current.image || 'https://via.placeholder.com/400x400'}
+              alt="Profile Photo"
+              className="img-fluid rounded-circle mr-2"
+              style={{ width: '50px' }}
+            />
+          ) : null}
+
           {sm ? null : (
             <div className="w-50">
               <div className="name">{current?.name}</div>
@@ -33,11 +36,11 @@ const MessageArea = ({ show }) => {
 
       <div className="d-flex flex-column" id="messages">
         <Divider />
-        {arr.map((item, i) => (
+        {messages?.map((item, i) => (
           <Message first={true} from={i % 2 === 0} />
         ))}
       </div>
-      <Input />
+      {current._id ? <Input id={current._id} /> : null}
     </div>
   );
 };

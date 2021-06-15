@@ -46,6 +46,8 @@ const contactsState = (state = contactsInitialState, { type, payload }) => {
       return { ...state, messages: payload };
     case actionTypes.UPDATE_CURRENT_CONTACT:
       return { ...state, current: payload };
+    case actionTypes.NEW_MESSAGE_RECIVED:
+      return { ...state, messages: state.messages.concat(payload) };
     default:
       return state;
   }

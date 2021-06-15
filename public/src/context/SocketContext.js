@@ -1,7 +1,8 @@
 import React, { createContext, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { actionTypes } from '../store/_actions.types';
+// import { actionTypes } from '../store/_actions.types';
+import { newMessageRecived } from '../store/_actions';
 
 import * as io from 'socket.io-client';
 
@@ -21,6 +22,8 @@ export default (props) => {
   socket.on('connect', () => {
     console.log('CONNECTED');
   });
+
+  socket.on('MESSAGE_CREATED', (data) => dispatch(newMessageRecived(data)));
 
   //   socket.on('USER_TOGGLE_ON_OFF_LINE', (data) => {
   //     dispatch({ type: userActionTypes.UPDATE_ONLINE_OFFLINE_CONTACT, payload: data });

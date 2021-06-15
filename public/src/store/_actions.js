@@ -99,3 +99,5 @@ export const getMessages = (data) => (dispatch) => {
 };
 
 export const updateCurentContact = (data) => (dispatch) => dispatch({ type: actionTypes.UPDATE_CURRENT_CONTACT, payload: data });
+
+export const newMessageRecived = (data) => (dispatch) => dispatch({ type: actionTypes.NEW_MESSAGE_RECIVED, payload: data });
