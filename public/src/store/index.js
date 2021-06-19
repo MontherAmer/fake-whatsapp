@@ -3,12 +3,12 @@ import ReduxThunk from 'redux-thunk';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import logger from 'redux-logger';
-import rootReducer from './_reducers';
+import rootReducer from './reducers';
 
 const persistConfig = {
   key: 'root',
   storage: storage,
-  whitelist: ['userState', 'contactsState', 'screenState'],
+  whitelist: ['userState', 'contactsState'],
 };
 
 const pReducer = persistReducer(persistConfig, rootReducer);

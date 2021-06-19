@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import useWindowSize from './hooks/windowSize';
 import { ThemeContext } from './context/ThemeContext';
 
-import { updateScreenWidth } from './store/_actions';
+import { updateScreenWidth } from './store/actions';
 
 import Alert from './components/_alert';
 import Loader from './components/_loader';

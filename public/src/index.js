@@ -6,7 +6,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import configureStore from './store';
 import { preStartApisFunction } from './store/_apis';
 import ThemeContext from './context/ThemeContext';
-import SocketContext from './context/SocketContext';
 
 import App from './App';
 
@@ -21,9 +20,7 @@ const render = (Component) => {
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <ThemeContext>
-          <SocketContext>
-            <Component />
-          </SocketContext>
+          <Component />
         </ThemeContext>
       </PersistGate>
     </Provider>,

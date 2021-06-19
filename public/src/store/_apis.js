@@ -8,6 +8,7 @@ export const apis = {
   friend: (data) => Axios.post('/apis/friend', data),
   group: (data) => Axios.post('/apis/group', data),
   messages: (data) => Axios.get(`/apis/messages/${data}`),
+  listContacts: () => Axios.get(`/apis/chatlist`),
 };
 
 const getToken = () => store().store.getState().userState.token;
