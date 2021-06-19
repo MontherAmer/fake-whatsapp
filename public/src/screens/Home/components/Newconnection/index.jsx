@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { isEmail } from '../../../../utils/is.email';
-import { addFriend, showAlert, showLoader, hideLoader } from '../../../../store/_actions';
+import { addFriend, showAlert, showLoader, hideLoader } from '../../../../store/actions';
 
 import Nav from '../../../../components/_navbar';
 
@@ -35,7 +35,6 @@ const Newconnection = () => {
       dispatch(showLoader());
       let { success } = await dispatch(addFriend(state));
       dispatch(hideLoader());
-      console.log('should redirect if success');
     } else {
       dispatch(showAlert('Please provide valid email'));
     }
@@ -51,8 +50,16 @@ const Newconnection = () => {
             <label>New friend:</label>
           </div>
           <div className="d-flex">
-            <input type="email" name="email" placeholder="Email.." value={state.email} onChange={handleChange} className="w-100 border-0 py-2" />
-            <i class="far fa-caret-square-right align-self-end ml-2" onClick={handleaddFriend}></i>
+            <input
+              type="email"
+              autoComplete="off"
+              name="email"
+              placeholder="Email.."
+              value={state.email}
+              onChange={handleChange}
+              className="w-100 border-0 py-2"
+            />
+            <i className="far fa-caret-square-right align-self-end ml-2" onClick={handleaddFriend}></i>
           </div>
         </div>
         {/* create group */}
@@ -82,8 +89,8 @@ const Newconnection = () => {
             />
             {state.show ? (
               <div className="group-menu">
-                {state.result.map((item) => (
-                  <div className="chat-list-item d-flex flex-row w-100 p-2 border-bottom unread" id="contact">
+                {state.result.map((item, i) => (
+                  <div className="chat-list-item d-flex flex-row w-100 p-2 border-bottom unread" id="contact" key={i}>
                     <img src={item.image} alt="Profile Photo" className="img-fluid rounded-circle mr-2" />
                     <div className="w-50">
                       <div className="name">{item.name}</div>
@@ -96,7 +103,7 @@ const Newconnection = () => {
           </div>
           {state.show ? null : (
             <div className="d-flex justify-content-end my-2">
-              <i class="far fa-caret-square-right"></i>
+              <i className="far fa-caret-square-right"></i>
             </div>
           )}
         </div>

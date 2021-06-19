@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { showAlert } from '../../../../store/_actions';
+import { showAlert } from '../../../../store/actions';
 
 const Image = ({ image, update }) => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Image = ({ image, update }) => {
 
   return (
     <>
-      <input type="file" id="profile-pic-input" className="d-none" onChange={handleImageChange} ref={hiddenFileInput} />
+      <input type="file" id="profile-pic-input" autoComplete="off" className="d-none" onChange={handleImageChange} ref={hiddenFileInput} />
       <img
         alt="Profile Photo"
         src={state.preview || image || 'https://via.placeholder.com/400x400'}

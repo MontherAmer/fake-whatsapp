@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { isEmail } from '../../../../utils/is.email';
-import { addFriend, showAlert, showLoader, hideLoader } from '../../../../store/_actions';
+import { addFriend, showAlert, showLoader, hideLoader, updateContactList } from '../../../../store/actions';
 
 import New from './_new';
 import Nav from '../../../../components/_navbar';
@@ -15,6 +15,10 @@ const ChatList = ({ show }) => {
 
   const { list } = useSelector((state) => state.contactsState);
 
+  useEffect(() => {
+    dispatch(updateContactList());
+  }, []);
+
   const handleChange = (e) => setState({ ...state, [e.target.name]: e.target.value });
 
   const handleaddFriend = async () => {
@@ -23,7 +27,6 @@ const ChatList = ({ show }) => {
       let { success } = await dispatch(addFriend(state));
       dispatch(hideLoader());
       setState({ ...state, email: '' });
-      console.log('should redirect if success');
     } else {
       dispatch(showAlert('Please provide valid email'));
     }
@@ -35,8 +38,8 @@ const ChatList = ({ show }) => {
       <div className="row h-100" id="left-area">
         <New email={state.email} handleChange={handleChange} handleaddFriend={handleaddFriend} />
         <div className="h-100 w-100 d-flex flex-column justify-content-start flex-nowrap overflow-auto" style={{ overflowY: 'auto' }}>
-          {list.map((item) => (
-            <Contact item={item} />
+          {list?.map((item, i) => (
+            <Contact item={item} key={i} />
           ))}
         </div>
       </div>

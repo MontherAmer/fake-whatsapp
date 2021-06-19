@@ -11,7 +11,7 @@ const More = ({ darkMode, updateMode, signOut }) => {
       </div>
       <div className="px-3 py-2 w-100 d-flex mode" onClick={signOut}>
         <p>
-          <i class="fas fa-sign-out-alt"></i> Sign out
+          <i className="fas fa-sign-out-alt"></i> Sign out
         </p>
       </div>
     </>

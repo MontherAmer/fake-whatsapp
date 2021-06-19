@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import moment from 'moment';
 
 const Message = ({ first, message }) => {
   let { createdAt, from, text } = message;
@@ -10,7 +11,7 @@ const Message = ({ first, message }) => {
         <div className={`bubble ${from === _id ? '' : 'alt'} ${first ? 'follow' : ''} `}>
           <div className={`txt`}>
             <span className={`message ${first ? 'follow' : ''}`}>{text}</span>
-            <span className="timestamp">10:20 pm</span>
+            <span className={`timestamp ${from === _id ? 'right' : 'left'}`}>{moment(createdAt).format('LT')}</span>
           </div>
           {first ? <div className={`bubble-arrow ${from === _id ? '' : 'alt'}`}></div> : null}
         </div>

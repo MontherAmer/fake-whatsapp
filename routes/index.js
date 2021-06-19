@@ -14,6 +14,8 @@ router.post('/friend', isAuthenticated, controllers.friend);
 
 router.post('/group', isAuthenticated, upload.single('image'), controllers.group);
 
-router.get('/messages/:id', isAuthenticated, controllers.messages);
+router.get('/messages/:id', isAuthenticated, controllers.listMessages);
+
+router.get('/chatlist', isAuthenticated, controllers.listContacts);
 
 module.exports = router;

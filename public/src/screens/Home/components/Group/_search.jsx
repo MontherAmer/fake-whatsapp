@@ -1,8 +1,6 @@
 import React from 'react';
 
 const Search = ({ handleChange, handleClick, show, value, options, users }) => {
-  console.log('USERS  ', users);
-  console.log('options  ', options);
   return (
     <div className="w-100 my-2 position-relative">
       <input
@@ -17,7 +15,7 @@ const Search = ({ handleChange, handleClick, show, value, options, users }) => {
       {show ? (
         <div className="group-menu">
           {options?.map((item, i) => (
-            <div className="chat-list-item d-flex flex-row w-100 p-2 border-bottom unread" id="contact" onClick={() => handleClick(i)}>
+            <div className="chat-list-item d-flex flex-row w-100 p-2 border-bottom unread" key={i} id="contact" onClick={() => handleClick(i)}>
               <img
                 src={item.image || 'https://via.placeholder.com/400x400'}
                 alt="Profile Photo"

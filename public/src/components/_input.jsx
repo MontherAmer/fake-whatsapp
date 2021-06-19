@@ -1,14 +1,16 @@
 import React, { useState, useContext } from 'react';
-import { v4 as uuid } from 'uuid';
+import { useSelector } from 'react-redux';
 
 import { SocketContext } from '../context/SocketContext';
 
 import Emoji from './_emoji';
 
 const Input = ({ id }) => {
-  const { sendSocket } = useContext(SocketContext);
-
   const [state, setState] = useState({});
+
+  const { submitMsg } = useContext(SocketContext);
+
+  const { _id } = useSelector((state) => state.userState);
 
   const handleChange = (e) => setState({ ...state, message: e.target.value, show: false });
 
@@ -16,14 +18,15 @@ const Input = ({ id }) => {
 
   const toggleEmoji = () => setState({ ...state, show: !state.show });
 
-  const submit = () => sendSocket('SEND_MESSAGE', { text: state.message, to: id, uuid: uuid() });
+  const submit = () => submitMsg({ text: state.message, to: id });
 
   return (
     <div className="justify-self-end align-items-center flex-row d-flex position-relative" id="input-area">
       <i className="far fa-smile text-muted px-3" style={{ cursor: 'pointer' }} onClick={toggleEmoji} />
       <input
         type="text"
-        value={state.message}
+        autoComplete="off"
+        value={state.message || ''}
         id="input"
         placeholder="Type a message"
         onChange={handleChange}

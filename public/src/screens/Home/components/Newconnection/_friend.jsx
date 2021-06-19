@@ -7,8 +7,16 @@ const Friend = ({ email, handleChange, handleaddFriend }) => {
         <label>New friend:</label>
       </div>
       <div className="d-flex">
-        <input type="email" name="email" placeholder="Email.." value={email} onChange={handleChange} className="w-100 border-0 py-2" />
-        <i class="far fa-caret-square-right align-self-end ml-2" onClick={handleaddFriend}></i>
+        <input
+          type="email"
+          name="email"
+          autoComplete="off"
+          placeholder="Email.."
+          value={email}
+          onChange={handleChange}
+          className="w-100 border-0 py-2"
+        />
+        <i className="far fa-caret-square-right align-self-end ml-2" onClick={handleaddFriend}></i>
       </div>
     </div>
   );

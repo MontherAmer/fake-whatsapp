@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import Divider from '../../../../components/_divider';
 import Input from '../../../../components/_input';
 import Message from '../../../../components/_message';
-
-let arr = [1, 2, 3];
+import { SocketContext } from '../../../../context/SocketContext';
 
 const MessageArea = ({ show }) => {
-  const { sm } = useSelector((state) => state.screenState);
+  const { sm } = useSelector((state) => state.utilsState);
+
+  const { markMsgAsRead } = useContext(SocketContext);
 
   const { current, messages } = useSelector((state) => state.contactsState);
+  const { _id } = useSelector((state) => state.userState);
+
+  useEffect(() => {
+    let objDiv = document.getElementById('messages');
+    objDiv.scrollTop = objDiv.scrollHeight;
+    markMsgAsRead({ user: _id, to: current._id });
+  }, [messages]);
 
   return (
     <div className={show ? 'd-sm-flex flex-column col-12 col-sm-7 col-md-8 p-0 h-100' : 'd-none'} id="message-area">
       <div className="row d-flex flex-row align-items-center justify-content-between p-2 pr-3 m-0 w-100" id="navbar">
         {sm ? <i className="fas fa-arrow-left ml-2" onClick={() => console.log('CHAT_LIST')}></i> : null}
         <div className="d-flex w-100">
-          {current._id ? (
+          {current?._id ? (
             <img
-              src={current.image || 'https://via.placeholder.com/400x400'}
+              src={current?.image || 'https://via.placeholder.com/400x400'}
               alt="Profile Photo"
               className="img-fluid rounded-circle mr-2"
               style={{ width: '50px' }}
@@ -37,10 +45,10 @@ const MessageArea = ({ show }) => {
       <div className="d-flex flex-column" id="messages">
         <Divider />
         {messages?.map((item, i, arr) => (
-          <Message first={i === 0 || item.from !== arr[i - 1].from} message={item} />
+          <Message first={i === 0 || item.from !== arr[i - 1].from} message={item} key={i} />
         ))}
       </div>
-      {current._id ? <Input id={current._id} /> : null}
+      {current?._id ? <Input id={current?._id} /> : null}
     </div>
   );
 };

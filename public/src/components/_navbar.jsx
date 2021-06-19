@@ -1,14 +1,13 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux'
-import { updateScreenView } from '../store/_actions'
+import { useSelector, useDispatch } from 'react-redux';
+import { updateScreenView } from '../store/actions';
 
 const Nav = () => {
   const dispatch = useDispatch();
 
-  const { screen } = useSelector(state => state.screenState)
+  const { screen } = useSelector((state) => state.utilsState);
 
-  const redirect = (data) => dispatch(updateScreenView(data))
-
+  const redirect = (data) => dispatch(updateScreenView(data));
 
   return (
     <div className="row d-flex flex-row align-items-center justify-content-between p-2 pr-3" id="navbar">
@@ -25,8 +24,6 @@ const Nav = () => {
       {screen !== 'GROUP' ? <i className="far fa-comments" onClick={() => redirect('GROUP')}></i> : null}
 
       {screen === 'GROUP' ? <div className="justify-self-start">Create Group</div> : null}
-
-
     </div>
   );
 };

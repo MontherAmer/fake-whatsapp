@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { createGroup, updateScreenView } from '../../../../store/_actions';
+import { createGroup, updateScreenView } from '../../../../store/actions';
 
 import Search from './_search';
 import Image from './_image';

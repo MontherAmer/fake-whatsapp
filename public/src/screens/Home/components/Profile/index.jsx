@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateProfile, logOut } from '../../../../store/_actions';
+import { updateProfile, logOut } from '../../../../store/actions';
 import { ThemeContext } from '../../../../context/ThemeContext';
 
 import More from './_more';
@@ -21,7 +21,7 @@ const Profile = ({ show }) => {
   const signOut = () => dispatch(logOut());
 
   return (
-    <div className={show ? "col-12 col-sm-5 col-md-4 d-flex flex-column" : "d-none"} id="left-area">
+    <div className={show ? 'col-12 col-sm-5 col-md-4 d-flex flex-column' : 'd-none'} id="left-area">
       <Nav />
       <div className="row overflow-auto" id="profile">
         <Image image={image} update={handleUpdate} />
