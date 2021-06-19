@@ -20,6 +20,11 @@ const getLastMessageDate = async (connectionId) => {
   return lastMessage?.created_at;
 };
 
+const getUnreadMessages = async (user, connection) => {
+  let count = await Message.countDocuments({ to: connection, readBy: { $nin: [user] } });
+  return count;
+};
+
 exports.getUserConnections = async (_id) => {
   try {
     let user = await User.findById(_id)
@@ -40,7 +45,7 @@ exports.getUserConnections = async (_id) => {
               image: getConnectionImage(_id, contact.users),
               lastMessage: await getLastMessageText(contact._id),
               lastMessageDate: await getLastMessageDate(contact._id),
-              unread: 1,
+              unread: await getUnreadMessages(user._id, contact._id),
             }
           : {
               _id: contact._id,
@@ -49,13 +54,13 @@ exports.getUserConnections = async (_id) => {
               image: contact.image,
               lastMessage: await getLastMessageText(contact._id),
               lastMessageDate: await getLastMessageDate(contact._id),
-              unread: 1,
+              unread: await getUnreadMessages(user._id, contact._id),
             };
       })
     );
 
     return data;
   } catch (err) {
-    console.log('ERR', err);
+    return [];
   }
 };
