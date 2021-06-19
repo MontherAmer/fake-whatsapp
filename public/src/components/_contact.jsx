@@ -1,9 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { updateScreenView, updateCurentContact, getMessages } from '../store/_actions';
+import { updateScreenView, updateCurentContact, getMessages } from '../store/actions';
+
+import moment from 'moment';
 
 const Contact = ({ item }) => {
-  console.log('item  ', item);
   const dispatch = useDispatch();
 
   const handleClick = () => (dispatch(getMessages(item._id)), dispatch(updateCurentContact(item)), dispatch(updateScreenView('MESSAGES')));
@@ -21,10 +22,12 @@ const Contact = ({ item }) => {
         <div className="small last-message">{item.lastMessage || 'Start chating'}</div>
       </div>
       <div className="flex-grow-1 text-right">
-        <div className="small time">{item.lastMessageDate || <>&nbsp;</>}</div>
+        <div className="small time" style={{ width: '95px' }}>
+          {item.lastMessageDate ? moment(item.lastMessageDate).format('LT') : <>&nbsp;</>}
+        </div>
 
         <div className="badge badge-success badge-pill small" id="unread-count">
-          {item.unread}
+          {item.unread ? item.unread : <></>}
         </div>
       </div>
     </div>
