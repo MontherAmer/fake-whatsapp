@@ -1,5 +1,5 @@
-const { User } = require('../models');
-const { createJWT } = require('../utils');
+const { User } = require('../../models');
+const { createJWT } = require('../../utils');
 
 exports.signup = async (req, res) => {
   try {

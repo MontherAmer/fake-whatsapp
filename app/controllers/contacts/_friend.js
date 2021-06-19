@@ -1,5 +1,5 @@
-const { User, Connection } = require('../models');
-const { getUserConnections } = require('../utils');
+const { User, Connection } = require('../../models');
+const { getUserConnections } = require('../../utils');
 
 exports.friend = async (req, res) => {
   try {
@@ -11,8 +11,6 @@ exports.friend = async (req, res) => {
 
     if (exist) return res.send({ success: false, status: 400, message: 'Already exist' });
 
-    console.log('existexist ', exist);
-
     let connection = new Connection({ users: [req._id, friend._id], type: 'User' });
 
     connection = await connection.save();
@@ -23,7 +21,6 @@ exports.friend = async (req, res) => {
 
     return res.send({ success: true, status: 200, data });
   } catch (err) {
-    console.log(err);
     return res.send({ success: false, status: 500 });
   }
 };

@@ -1,5 +1,5 @@
-const { User, Connection } = require('../models');
-const { getUserConnections } = require('../utils');
+const { User, Connection } = require('../../models');
+const { getUserConnections } = require('../../utils');
 
 exports.group = async (req, res) => {
   try {
@@ -17,7 +17,6 @@ exports.group = async (req, res) => {
 
     return res.send({ success: true, status: 200, data });
   } catch (err) {
-    console.log(err);
     return res.send({ success: false, status: 500 });
   }
 };
