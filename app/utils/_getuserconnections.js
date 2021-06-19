@@ -9,15 +9,14 @@ const getConnectionImage = (id, users) => {
 };
 
 const getLastMessageText = async (connectionId) => {
-  // messages
-  let lastMessage = await Message.findOne({ to: connectionId }).sort({ created_at: 1 });
+  let lastMessage = await Message.findOne({ to: connectionId }).sort({ createdAt: -1 });
   return lastMessage?.text;
 };
 
 const getLastMessageDate = async (connectionId) => {
   // messages
-  let lastMessage = await Message.findOne({ to: connectionId }).sort({ created_at: 1 });
-  return lastMessage?.created_at;
+  let lastMessage = await Message.findOne({ to: connectionId }).sort({ createdAt: -1 });
+  return lastMessage?.createdAt;
 };
 
 const getUnreadMessages = async (user, connection) => {
@@ -45,7 +44,7 @@ exports.getUserConnections = async (_id) => {
               image: getConnectionImage(_id, contact.users),
               lastMessage: await getLastMessageText(contact._id),
               lastMessageDate: await getLastMessageDate(contact._id),
-              unread: await getUnreadMessages(user._id, contact._id),
+              unread: await getUnreadMessages(_id, contact._id),
             }
           : {
               _id: contact._id,
@@ -54,7 +53,7 @@ exports.getUserConnections = async (_id) => {
               image: contact.image,
               lastMessage: await getLastMessageText(contact._id),
               lastMessageDate: await getLastMessageDate(contact._id),
-              unread: await getUnreadMessages(user._id, contact._id),
+              unread: await getUnreadMessages(_id, contact._id),
             };
       })
     );

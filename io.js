@@ -14,8 +14,7 @@ io.use(async (socket, next) => {
   if (socket.handshake.query && socket.handshake.query.token) {
     try {
       let token = socket.handshake.query.token;
-      console.log('TTT ', token);
-      let { _id, email } = await verify(token, process.env.ACCESS_TOKEN_SECRET);
+      let { _id } = await verify(token, process.env.ACCESS_TOKEN_SECRET);
       if (!_id) return;
       socket._id = _id;
       next();

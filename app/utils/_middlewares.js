@@ -17,7 +17,7 @@ exports.isAuthenticated = async (req, res, next) => {
 
 exports.canSeeMessages = (req, res, next) => {
   try {
-    console.log('need to be handled');
+    // NOTE need to be handled
   } catch (err) {
     return res.send({ success: false, status: 500, message: 'Some thing went wrong' });
   }
