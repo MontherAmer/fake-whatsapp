@@ -9,10 +9,10 @@ const Alert = () => {
   const { show, text } = useSelector((state) => state.utilsState);
 
   useEffect(() => {
-    setTimeout(() => dispatch({ type: actionTypes.HIDE_ALERT }), 3000);
+    setTimeout(() => dispatch({ type: actionTypes.ACTION_HIDE_ALERT }), 5000);
   }, [show]);
 
-  return <div className={`alert ${show ? 'show' : 'hide'}`}>{text}</div>;
+  return <div className={`alert ${show ? 'show' : ''}`}>{text}</div>;
 };
 
 export default Alert;
