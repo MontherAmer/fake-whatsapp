@@ -19,7 +19,7 @@ const Contact = ({ item }) => {
       />
       <div className="w-75">
         <div className="name">{item.name}</div>
-        <div className="small last-message">{item.lastMessage || 'Start chating'}</div>
+        <div className="small last-message">{item.typing ? 'Typing...' : item.lastMessage || 'Start chating'}</div>
       </div>
       <div className="flex-grow-1 text-right">
         <div className="small time" style={{ width: '95px' }}>

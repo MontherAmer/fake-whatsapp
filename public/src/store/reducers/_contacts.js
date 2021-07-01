@@ -36,6 +36,12 @@ const contactsState = (state = initialState, { type, payload }) => {
     case actionTypes.ACTION_INCREASE_UNREAD_MESSAGES:
       return { ...state, list: state?.list?.map((item) => (item._id === payload ? { ...item, unread: item.unread + 1 } : item)) };
 
+    case actionTypes.ACTION_USER_START_TYPING:
+      return { ...state, list: state?.list?.map((item) => (item._id === payload ? { ...item, typing: true } : item)) };
+
+    case actionTypes.ACTION_USER_STOP_TYPING:
+      return { ...state, list: state?.list?.map((item) => (item._id === payload ? { ...item, typing: false } : item)) };
+
     case actionTypes.ACTION_USER_LOGED_OUT:
       return {};
     default:

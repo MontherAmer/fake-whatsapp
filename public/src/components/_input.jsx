@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useSelector } from 'react-redux';
 
 import { SocketContext } from '../context/SocketContext';
@@ -8,9 +8,13 @@ import Emoji from './_emoji';
 const Input = ({ id }) => {
   const [state, setState] = useState({ message: '' });
 
-  const { submitMsg } = useContext(SocketContext);
+  const { submitMsg, startTyping, stopTyping } = useContext(SocketContext);
 
   const { _id } = useSelector((state) => state.userState);
+
+  useEffect(() => {
+    state.message ? startTyping() : stopTyping();
+  }, [state.message]);
 
   const handleChange = (e) => setState({ ...state, message: e.target.value, show: false });
 

@@ -40,5 +40,17 @@ export default (props) => {
     socket.emit('SOCKET_MARK_MSG_AS_READ', data);
   };
 
-  return <SocketContext.Provider value={{ socket, sendSocket, markMsgAsRead, submitMsg }}>{props.children}</SocketContext.Provider>;
+  const startTyping = () => socket.emit('USER_START_TYPING', { user: _id, contact: current._id });
+
+  socket.on('RECIVE_USER_START_TYPING', (data) => dispatch({ type: actionTypes.ACTION_USER_START_TYPING, payload: data }));
+
+  const stopTyping = () => socket.emit('USER_STOP_TYPING', { user: _id, contact: current._id });
+
+  socket.on('RECIVE_USER_STOP_TYPING', (data) => dispatch({ type: actionTypes.ACTION_USER_STOP_TYPING, payload: data }));
+
+  return (
+    <SocketContext.Provider value={{ socket, sendSocket, markMsgAsRead, startTyping, stopTyping, submitMsg }}>
+      {props.children}
+    </SocketContext.Provider>
+  );
 };
