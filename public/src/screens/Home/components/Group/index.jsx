@@ -17,20 +17,21 @@ const Group = ({ show }) => {
   const handleChange = (e) => setState({ ...state, [e.target.name]: e.target.value });
 
   const handleSearch = (e) => {
-    let users = list.filter((item) => item.type === 'User' && !state.selectedIds.includes(item._id));
+    let users = list.filter((item) => item.type === 'User' && !state.selectedIds.includes(item.userId));
     let options = users.filter((item) => item.name.includes(e.target.value) || item.email.includes(e.target.value));
     let show = e.target.value ? true : false;
     setState({ ...state, search: e.target.value, show, options });
   };
 
-  const handleUsers = (i) =>
+  const handleUsers = (i) => {
     setState({
       ...state,
-      selectedIds: [...state.selectedIds, state.options[i]._id],
+      selectedIds: [...state.selectedIds, state.options[i].userId],
       users: [...state.users, state.options[i]],
       search: '',
       show: false,
     });
+  };
 
   const submit = async () => {
     await dispatch(createGroup(state));

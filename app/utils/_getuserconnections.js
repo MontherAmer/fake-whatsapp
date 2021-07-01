@@ -45,6 +45,7 @@ exports.getUserConnections = async (_id) => {
               lastMessage: await getLastMessageText(contact._id),
               lastMessageDate: await getLastMessageDate(contact._id),
               unread: await getUnreadMessages(_id, contact._id),
+              userId: data._id,
             }
           : {
               _id: contact._id,

@@ -13,8 +13,7 @@ export const addFriend = (data) => (dispatch) => {
           payload: res.data,
         }),
         dispatch({ type: actionTypes.ACTION_HIDE_LOADER, success: true }))
-      : (dispatchEvent({ type: actionTypes.ACTION_SHOW_ALERT, payload: 'This email does not have accound' }),
-        dispatch({ type: actionTypes.ACTION_HIDE_LOADER }));
+      : (dispatchEvent({ type: actionTypes.ACTION_SHOW_ALERT, payload: res.message }), dispatch({ type: actionTypes.ACTION_HIDE_LOADER }));
   });
 };
 

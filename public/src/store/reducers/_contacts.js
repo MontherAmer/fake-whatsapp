@@ -18,7 +18,7 @@ const contactsState = (state = initialState, { type, payload }) => {
       return {
         ...state,
         messages: state.messages.concat(payload),
-        list: temp.map((item) => (item._id === payload.to ? { ...item, lastMessage: payload.text } : item)),
+        list: temp?.map((item) => (item._id === payload.to ? { ...item, lastMessage: payload.text } : item)),
       };
     case actionTypes.ACTION_UPDATE_MESSAGE_IF_SENDER:
       return { ...state, messages: state.messages.map((item) => (item.uuid === payload.uuid ? payload : item)) };
@@ -31,10 +31,10 @@ const contactsState = (state = initialState, { type, payload }) => {
       return { ...state, list: temp.map((item) => (item._id === payload.to ? { ...item, lastMessage: payload.text } : item)) };
 
     case actionTypes.ACTION_CLEAR_UNREAD_MESSAGES:
-      return { ...state, list: state.list.map((item) => (item._id === payload ? { ...item, unread: 0 } : item)) };
+      return { ...state, list: state?.list?.map((item) => (item._id === payload ? { ...item, unread: 0 } : item)) };
 
     case actionTypes.ACTION_INCREASE_UNREAD_MESSAGES:
-      return { ...state, list: state.list.map((item) => (item._id === payload ? { ...item, unread: item.unread + 1 } : item)) };
+      return { ...state, list: state?.list?.map((item) => (item._id === payload ? { ...item, unread: item.unread + 1 } : item)) };
 
     case actionTypes.ACTION_USER_LOGED_OUT:
       return {};
