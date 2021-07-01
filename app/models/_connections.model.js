@@ -7,6 +7,7 @@ const ConnectionSchema = new mongoose.Schema(
     name: { type: String },
     users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     type: { type: String, enum: ['User', 'Group'] },
+    image: { type: String },
     messages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Message' }],
   },
   {
