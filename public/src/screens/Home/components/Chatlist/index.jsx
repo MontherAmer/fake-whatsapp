@@ -35,7 +35,7 @@ const ChatList = ({ show }) => {
   return (
     <div className={show ? 'col-12 col-sm-5 col-md-4 d-flex flex-column h-100' : 'd-none'}>
       <Nav />
-      <div className="row h-100" id="left-area">
+      <div className="row" id="left-area" style={{ height: 'calc(100% - 67px)' }}>
         <New email={state.email} handleChange={handleChange} handleaddFriend={handleaddFriend} />
         <div className="h-100 w-100 d-flex flex-column justify-content-start flex-nowrap overflow-auto" style={{ overflowY: 'auto' }}>
           {list?.map((item, i) => (

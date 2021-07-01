@@ -22,8 +22,8 @@ export default (props) => {
 
   socket.on('SOCKET_REPLAY_ON_CREATE_MESSAGE', (data) => {
     if (_id === data.from) dispatch({ type: actionTypes.ACTION_UPDATE_MESSAGE_IF_SENDER, payload: data });
-    if (current._id === data.to && data.from !== _id) dispatch({ type: actionTypes.ACTION_UPDATE_MESSAGE_IF_RECIVER, payload: data });
-    if (current._id !== data.to && data.from !== _id) dispatch({ type: actionTypes.ACTION_INCREASE_UNREAD_MESSAGES, payload: data.to });
+    if (current?._id === data.to && data.from !== _id) dispatch({ type: actionTypes.ACTION_UPDATE_MESSAGE_IF_RECIVER, payload: data });
+    if (current?._id !== data.to && data.from !== _id) dispatch({ type: actionTypes.ACTION_INCREASE_UNREAD_MESSAGES, payload: data.to });
     dispatch({ type: actionTypes.ACTION_UPDATE_LAST_MESSAGE_IN_LIST, payload: data });
   });
 

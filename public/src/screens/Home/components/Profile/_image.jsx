@@ -21,7 +21,7 @@ const Image = ({ image, update }) => {
       <input type="file" id="profile-pic-input" autoComplete="off" className="d-none" onChange={handleImageChange} ref={hiddenFileInput} />
       <img
         alt="Profile Photo"
-        src={state.preview || image || 'https://via.placeholder.com/400x400'}
+        src={image || state.preview || 'https://via.placeholder.com/400x400'}
         className="img-fluid rounded-circle my-5 justify-self-center mx-auto profile-pic"
         onClick={handleImage}
       />

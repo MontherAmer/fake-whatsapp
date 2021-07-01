@@ -17,7 +17,7 @@ const Contact = ({ item }) => {
         className="img-fluid rounded-circle mr-2"
         style={{ width: '50px' }}
       />
-      <div className="w-50">
+      <div className="w-75">
         <div className="name">{item.name}</div>
         <div className="small last-message">{item.lastMessage || 'Start chating'}</div>
       </div>

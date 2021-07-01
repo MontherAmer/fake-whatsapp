@@ -1,11 +1,13 @@
 import React, { useEffect, useContext } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Divider from '../../../../components/_divider';
 import Input from '../../../../components/_input';
 import Message from '../../../../components/_message';
 import { SocketContext } from '../../../../context/SocketContext';
+import { updateScreenView } from '../../../../store/actions';
 
 const MessageArea = ({ show }) => {
+  const dispatch = useDispatch();
   const { sm } = useSelector((state) => state.utilsState);
 
   const { markMsgAsRead } = useContext(SocketContext);
@@ -19,10 +21,12 @@ const MessageArea = ({ show }) => {
     markMsgAsRead({ user: _id, to: current?._id });
   }, [messages]);
 
+  const redirect = (data) => dispatch(updateScreenView(data));
+
   return (
     <div className={show ? 'd-sm-flex flex-column col-12 col-sm-7 col-md-8 p-0 h-100' : 'd-none'} id="message-area">
       <div className="row d-flex flex-row align-items-center justify-content-between p-2 pr-3 m-0 w-100" id="navbar">
-        {sm ? <i className="fas fa-arrow-left ml-2" onClick={() => console.log('CHAT_LIST')}></i> : null}
+        {sm ? <i className="fas fa-arrow-left ml-2" onClick={() => redirect('CHAT_LIST')}></i> : null}
         <div className="d-flex w-100">
           {current?._id ? (
             <img
@@ -42,8 +46,8 @@ const MessageArea = ({ show }) => {
         </div>
       </div>
 
-      <div className="d-flex flex-column" id="messages">
-        <Divider />
+      <div className="d-flex flex-column" id="messages" style={{ minHeight: 'calc(100% - 137px)' }}>
+        {/* <Divider /> */}
         {messages?.map((item, i, arr) => (
           <Message first={i === 0 || item.from !== arr[i - 1].from} message={item} key={i} />
         ))}
