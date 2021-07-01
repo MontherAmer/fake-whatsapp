@@ -16,7 +16,7 @@ const MessageArea = ({ show }) => {
   useEffect(() => {
     let objDiv = document.getElementById('messages');
     objDiv.scrollTop = objDiv.scrollHeight;
-    markMsgAsRead({ user: _id, to: current._id });
+    markMsgAsRead({ user: _id, to: current?._id });
   }, [messages]);
 
   return (

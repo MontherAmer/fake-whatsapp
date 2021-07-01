@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { showAlert } from '../../../../store/actions';
 
@@ -9,10 +9,14 @@ const Image = ({ image, update }) => {
 
   const [state, setState] = useState({});
 
+  useEffect(() => {
+    if (!image) setState({ ...state, preview: null });
+  }, [image]);
+
   const handleImage = (e) => hiddenFileInput.current.click();
 
   const handleImageChange = (e) =>
-    e.target.files[0].type.split('/')[0] === 'image'
+    e?.target?.files[0]?.type.split('/')[0] === 'image'
       ? setState({ ...state, image: e.target.files[0], preview: URL.createObjectURL(e.target.files[0]) }, update(e.target.files[0]))
       : dispatch(showAlert('Only images are accepted'));
 

@@ -34,6 +34,7 @@ const Group = ({ show }) => {
 
   const submit = async () => {
     await dispatch(createGroup(state));
+    setState({ ...state, users: [], selectedIds: [], search: '', show: false, name: '', image: null });
     dispatch(updateScreenView('CHAT_LIST'));
   };
 
@@ -42,7 +43,7 @@ const Group = ({ show }) => {
       <Nav />
       <div className="row px-3 h-100" id="group-container">
         <div className="h-100 w-100 d-flex flex-column justify-content-start flex-nowrap overflow-auto" style={{ overflowY: 'auto' }}>
-          <Image update={(e) => setState({ ...state, image: e })} />
+          <Image update={(e) => setState({ ...state, image: e })} image={state.image} />
           <Name handleChange={handleChange} value={state.name} />
           <Search
             handleChange={handleSearch}
