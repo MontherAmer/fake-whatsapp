@@ -9,9 +9,6 @@ const Auth = () => {
   const changePage = () => setState({ ...state, page: state.page === 'SIGNIN' ? 'SIGNUP' : 'SIGNIN' });
 
   return state.page === 'SIGNIN' ? <SignIn changePage={changePage} /> : <SignUp changePage={changePage} />;
-
-  // <div className="d-flex justify-content-center align-items-center h-100" id="auth">
-  // </div>
 };
 
 export default Auth;

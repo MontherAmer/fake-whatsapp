@@ -19,6 +19,7 @@ fake-whatsapp is a real time chat app, that designed like whatsapp
 - Like any simple chat app it allow user to chat with other users directly or in groups
 - designed like whatapp
 - have 2 themes dark and light
+- responsive design
 
 ### Tech
 
@@ -30,3 +31,8 @@ fake-whatsapp uses a number of open source projects to work properly:
 - [react-redux](https://react-redux.js.org/) - Official React bindings for Redux
 - [bootstrap](https://getbootstrap.com/) - front-end open source toolkit
 - [emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react) - npm package for react emoji picking
+
+### To do
+
+- add tag feature
+- add feature to send images in messages
