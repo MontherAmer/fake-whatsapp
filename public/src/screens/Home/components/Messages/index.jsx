@@ -46,7 +46,7 @@ const MessageArea = ({ show }) => {
         </div>
       </div>
 
-      <div className="d-flex flex-column" id="messages" style={{ minHeight: 'calc(100% - 137px)' }}>
+      <div className="d-flex flex-column" id="messages" style={{ height: 'calc(100% - 137px)' }}>
         {/* <Divider /> */}
         {messages?.map((item, i, arr) => (
           <Message first={i === 0 || item.from !== arr[i - 1].from} message={item} key={i} />

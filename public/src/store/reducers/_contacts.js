@@ -18,7 +18,7 @@ const contactsState = (state = initialState, { type, payload }) => {
       return {
         ...state,
         messages: state.messages.concat(payload),
-        list: temp?.map((item) => (item._id === payload.to ? { ...item, lastMessage: payload.text } : item)),
+        list: temp?.map((item) => (item._id === payload.to ? { ...item, lastMessageDate: payload.createdAt, lastMessage: payload.text } : item)),
       };
     case actionTypes.ACTION_UPDATE_MESSAGE_IF_SENDER:
       return { ...state, messages: state.messages.map((item) => (item.uuid === payload.uuid ? payload : item)) };
@@ -28,7 +28,12 @@ const contactsState = (state = initialState, { type, payload }) => {
 
     case actionTypes.ACTION_UPDATE_LAST_MESSAGE_IN_LIST:
       state.list.map((item) => (item._id === payload.to ? temp.unshift(item) : temp.push(item)));
-      return { ...state, list: temp.map((item) => (item._id === payload.to ? { ...item, lastMessage: payload.text } : item)) };
+      return {
+        ...state,
+        list: temp.map((item) =>
+          item._id === payload.to ? { ...item, typing: false, lastMessageDate: payload.createdAt, lastMessage: payload.text } : item
+        ),
+      };
 
     case actionTypes.ACTION_CLEAR_UNREAD_MESSAGES:
       return { ...state, list: state?.list?.map((item) => (item._id === payload ? { ...item, unread: 0 } : item)) };

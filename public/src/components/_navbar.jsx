@@ -30,7 +30,9 @@ const Nav = () => {
           style={{ width: '50px' }}
         />
       ) : null}
-      {screen !== 'CHAT_LIST' && screen !== 'MESSAGES' ? <i className="fas fa-arrow-left" onClick={() => redirect('CHAT_LIST')}></i> : null}
+      {screen !== 'CHAT_LIST' && screen !== 'MESSAGES' ? (
+        <i className="fas fa-arrow-left" style={{ zIndex: '10' }} onClick={() => redirect('CHAT_LIST')}></i>
+      ) : null}
 
       {screen !== 'GROUP' ? <i className="far fa-comments" onClick={() => redirect('GROUP')}></i> : null}
 
