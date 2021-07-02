@@ -1,10 +1,14 @@
 import { actionTypes } from '../_actions.types';
 import { apis } from '../_apis';
+import { isEmail } from '../../utils/is.email';
 import store from '../index';
 
 const dispatchEvent = (e) => store().store.dispatch(e);
 
 export const login = (data) => (dispatch) => {
+  if (!data.email || !data.password) return dispatch({ type: actionTypes.ACTION_SHOW_ALERT, payload: 'Please fill all fields' });
+  if (!isEmail(data.email)) return dispatch({ type: actionTypes.ACTION_SHOW_ALERT, payload: 'Email must be in email format' });
+  dispatch({ type: actionTypes.ACTION_SHOW_LOADER });
   return apis.login(data).then((res) => {
     return res.success
       ? (dispatch({
@@ -18,6 +22,9 @@ export const login = (data) => (dispatch) => {
 };
 
 export const signUp = (data) => (dispatch) => {
+  if (!data.email || !data.name || !data.password) return dispatch({ type: actionTypes.ACTION_SHOW_ALERT, payload: 'Please fill all fields' });
+  if (!isEmail(data.email)) return dispatch({ type: actionTypes.ACTION_SHOW_ALERT, payload: 'Email must be in email format' });
+  if (!isEmail(data.password.length < 5)) return dispatch({ type: actionTypes.ACTION_SHOW_ALERT, payload: 'Password should be 5 char' });
   dispatch({ type: actionTypes.ACTION_SHOW_LOADER });
   return apis.signup(data).then((res) => {
     return res.success

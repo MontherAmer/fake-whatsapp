@@ -17,7 +17,7 @@ const SignIn = ({ changePage }) => {
 
   const handleChange = (e) => setState({ ...state, [e.target.name]: e.target.value });
 
-  const handleClick = () => (isEmail(state.email) && state.password.length > 5 ? dispatch(login(state)) : null);
+  const handleClick = () => dispatch(login(state));
 
   if (_id) history.push('/');
 

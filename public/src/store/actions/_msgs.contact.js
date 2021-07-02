@@ -7,6 +7,7 @@ const dispatchEvent = (e) => store().store.dispatch(e);
 export const addFriend = (data) => (dispatch) => {
   dispatch({ type: actionTypes.ACTION_SHOW_LOADER });
   return apis.friend(data).then((res) => {
+    console.log('rrrrrrrrrrrr', res);
     return res.success
       ? (dispatch({
           type: actionTypes.ACTION_UPDATE_CONTACT_LIST,
@@ -32,8 +33,7 @@ export const createGroup = (data) => (dispatch) => {
           payload: res.data,
         }),
         dispatch({ type: actionTypes.ACTION_HIDE_LOADER, success: true }))
-      : (dispatchEvent({ type: actionTypes.ACTION_SHOW_ALERT, payload: 'This email does not have accound' }),
-        dispatch({ type: actionTypes.ACTION_HIDE_LOADER }));
+      : (dispatchEvent({ type: actionTypes.ACTION_SHOW_ALERT, payload: res.message }), dispatch({ type: actionTypes.ACTION_HIDE_LOADER }));
   });
 };
 

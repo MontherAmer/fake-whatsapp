@@ -5,6 +5,8 @@ exports.friend = async (req, res) => {
   try {
     let friend = await User.findOne({ email: req.body.email });
 
+    if (!friend) return res.send({ success: false, status: 400, message: `This email does not have account on the app` });
+
     if (String(friend._id) === String(req._id)) return res.send({ success: false, status: 400, message: `You can't add yourself` });
 
     let exist = await Connection.findOne({ type: 'User', users: { $all: [req._id, friend._id] } });
@@ -21,6 +23,7 @@ exports.friend = async (req, res) => {
 
     return res.send({ success: true, status: 200, data });
   } catch (err) {
-    return res.send({ success: false, status: 500 });
+    console.log(err);
+    return res.send({ success: false, status: 500, message: 'Some thing went wrong' });
   }
 };

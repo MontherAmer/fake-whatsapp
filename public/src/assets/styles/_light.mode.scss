@@ -466,7 +466,7 @@ img {
   color: #000000;
   border-bottom: 1px solid #d8d6d6;
   transition: width 0.75s ease, opacity 0.75s ease;
-  height: 40px;
+  min-height: 40px;
   padding: 16px;
   overflow-y: hidden;
   display: flex;
@@ -476,7 +476,7 @@ img {
 
 .alert.show {
   opacity: 1;
-  height: 40px;
+  min-height: 40px;
   width: 300px;
   padding: 16px;
   overflow-y: hidden;

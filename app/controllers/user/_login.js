@@ -21,6 +21,6 @@ exports.login = async (req, res) => {
 
     return res.send({ success: true, status: 200, data: { _id, email, image, name, token, contacts } });
   } catch (err) {
-    return res.send({ success: false, status: 500 });
+    return res.send({ success: false, status: 500, message: 'Some thing went wrong' });
   }
 };

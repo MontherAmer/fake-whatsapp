@@ -17,6 +17,6 @@ exports.group = async (req, res) => {
 
     return res.send({ success: true, status: 200, data });
   } catch (err) {
-    return res.send({ success: false, status: 500 });
+    return res.send({ success: false, status: 500, message: 'Some thing went wrong' });
   }
 };
