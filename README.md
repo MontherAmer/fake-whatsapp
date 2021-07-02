@@ -1,6 +1,6 @@
-# fake whatsapp
+# fake-whatsapp
 
-fake whatsapp is a real time chat app, that designed like whatsapp
+fake-whatsapp is a real time chat app, that designed like whatsapp
 
 ![](livechat.gif)
 ![](smallscreens.gif)
@@ -22,9 +22,11 @@ fake whatsapp is a real time chat app, that designed like whatsapp
 
 ### Tech
 
-letschat uses a number of open source projects to work properly:
+fake-whatsapp uses a number of open source projects to work properly:
 
 - [Express](https://expressjs.com/) - Web framework for Node.js
 - [React](https://reactjs.org/) - JavaScript library for building user interfaces
 - [socket-io](https://socket.io/) - real-time sockets
+- [react-redux](https://react-redux.js.org/) - Official React bindings for Redux
+- [bootstrap](https://getbootstrap.com/) - front-end open source toolkit
 - [emoji-picker-react](https://www.npmjs.com/package/emoji-picker-react) - npm package for react emoji picking
